@@ -46,13 +46,12 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
     'wagtail.contrib.modeladmin',
 
-    'storages',
     'modelcluster',
     'taggit',
-
     'rest_framework',
     'django_extensions',
     'webpack_loader',
+    'storages',
 
     'home',
     'search',
@@ -74,8 +73,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware'
 ]
 
 ROOT_URLCONF = 'ramshackleaudio.urls'
@@ -148,8 +146,6 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
