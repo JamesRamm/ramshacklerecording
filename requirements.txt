@@ -39,5 +39,6 @@ stripe==1.46.0
 Unidecode==0.4.19
 wagtail==1.7
 webencodings==0.5
+whitenoise==3.2.3
 Willow==0.4
 wrapt==1.10.8
