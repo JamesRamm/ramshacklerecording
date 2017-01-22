@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.sqlite3
+*.bundle.js
+*.js.*
+media/
+node_modules/

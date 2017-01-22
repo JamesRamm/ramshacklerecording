@@ -1,0 +1,134 @@
+html {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    color: #6c5a49;
+}
+
+.loading {
+    pointer-events: all;
+    z-index: 99999;
+    border: none;
+    margin: 0px;
+    padding: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    cursor: wait;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.helper-text {
+  color: #8A6D3B;
+  font-size: 12px;
+  margin-top: 5px;
+  height: 12px;
+  display: block;
+}
+
+.form-control {
+    height: 34px;
+}
+
+/* Braintree Hosted Fields styling classes*/
+.braintree-hosted-fields-focused { 
+  border: 1px solid #0275d8;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.braintree-hosted-fields-focused.focused-invalid {
+  border: 1px solid #ebcccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(100,100,0,.6);
+}
+
+@media (max-width: 670px) {
+  .form-group {
+    width: 100%;
+  }
+  
+  .btn {
+    white-space: normal;
+  }
+}
+
+.navbar-brand {
+    float: none;
+    margin: 0 auto;
+    position: absolute;
+    padding-top: 0;
+
+}
+
+.navbar {
+    height: 90px;
+}
+
+.navbar-nav .nav-link {
+    padding-top: 20px;
+}
+
+.carousel-caption {
+    left: 60%;
+    top: 15%;
+    text-align: left;
+
+}
+
+.carousel-title {
+    padding: 5px;
+    font-size: 5rem;
+    color: #f7f7f7;
+}
+.carousel-blurb {
+    font-size: 3rem;
+    color: #f7f7f7;
+}
+
+/* responsive nav stacked liked 3.x */
+@media(max-width:768px) {
+    .navbar .collapsing {
+        clear: both;
+    }
+    .navbar .navbar-nav>.nav-item {
+        float: none;
+        clear: both;
+        margin-left: 1rem;
+    }
+}
+
+.btn-primary {
+    background-color: #6c5a49;
+    border-color: #6c5a49;
+}
+
+.text-overlay {
+    text-shadow:
+       3px 3px 0 #fff,
+     -1px -1px 0 #fff,  
+      1px -1px 0 #fff,
+      -1px 1px 0 #fff,
+       1px 1px 0 #fff;
+}
+
+.inherit-color {
+    color: inherit;
+    text-decoration: none;
+}
+
+.borderless {
+    border: none;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.breadcrumb {
+    background-color: #fff;
+}
