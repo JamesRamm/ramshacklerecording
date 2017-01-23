@@ -7,6 +7,7 @@
 {% block extra_css %}
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css"/>
+
 {% endblock %}
 
 {% block body_class %}template-productindex{% endblock %}
@@ -15,7 +16,7 @@
 <div class="container">
     <h1>{{ page.title }}</h1>
 
-    <table id="schematic_table" class="display">
+    <table id="schematic_table" class="table table-hover">
         <thead>
             <tr>
                 <th>Title</th>
