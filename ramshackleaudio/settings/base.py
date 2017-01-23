@@ -109,6 +109,8 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+# The below requires DATABASE_URL env. var to be set (e.g. postgres:///ramshackleaudio)
 DATABASES = {'default': dj_database_url.config()}
 
 

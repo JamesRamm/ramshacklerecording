@@ -11,12 +11,14 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
 from basket import urls as basket_urls
 from checkout import urls as checkout_urls
+from projects import urls as projects_urls
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(basket_urls)),
     url(r'^api/', include(checkout_urls)),
+    url(r'^api/', include(projects_urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
