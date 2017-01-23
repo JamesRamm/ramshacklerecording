@@ -27,6 +27,7 @@ class CarouselItem(models.Model):
         FieldPanel('embed_url'),
         FieldPanel('title'),
         FieldPanel('caption'),
+        FieldPanel('centre_text')
     ]
 
     class Meta:
