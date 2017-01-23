@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from products.models import ProductVariant
 
-PRODUCT_VARIANT_MODEL = settings.get('PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
+PRODUCT_VARIANT_MODEL = getattr(settings, 'PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
 
 class BasketItem(models.Model):
     basket_id = models.CharField(max_length=32)

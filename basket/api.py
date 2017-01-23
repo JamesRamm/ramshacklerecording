@@ -7,7 +7,7 @@ from basket.models import BasketItem
 from basket.serializers import BasketItemSerializer
 from basket import utils
 
-PRODUCT_VARIANT_MODEL = settings.get('PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
+PRODUCT_VARIANT_MODEL = getattr(settings, 'PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
 ProductVariant = import_string(PRODUCT_VARIANT_MODEL)
 
 
