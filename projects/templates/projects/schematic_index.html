@@ -5,7 +5,8 @@
 {% load wagtailimages_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.13/r-2.1.0/sc-1.4.2/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css"/>
 {% endblock %}
 
 {% block body_class %}template-productindex{% endblock %}
@@ -20,7 +21,6 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Company</th>
-                <th>URL</th>
             </tr>
         </thead>
     </table>
@@ -31,6 +31,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/dt-1.10.13/r-2.1.0/sc-1.4.2/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="{% static 'js/schematics.js' %}"></script>
 {% endblock %}
