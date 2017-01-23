@@ -5,7 +5,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
   context: __dirname,
   entry: {
-    checkout: './checkout/index.jsx',
+    checkout: './src/checkout/index.jsx',
     vendors: [
       'react', 'redux', 'react-redux', 'redux-thunk', 
       'redux-form', 'isomorphic-fetch', 'whatwg-fetch',
@@ -29,6 +29,9 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: 'style-loader!css-loader!postcss-loader!less'
+    },  {
+      test: /products.js$/,
+      loaders: ['expose-loader?Products','babel?presets[]=stage-0']
     }]
   },
   resolve: {
@@ -48,7 +51,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('debug')
+        NODE_ENV: JSON.stringify('production')
       }
     }),
     new webpack.SourceMapDevToolPlugin(
