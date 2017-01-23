@@ -20,6 +20,7 @@ class CarouselItem(models.Model):
     embed_url = models.URLField("Embed URL", blank=True)
     caption = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=32, blank=True)
+    centre_text = models.BooleanField(default=False)
 
     panels = [
         ImageChooserPanel('image'),

@@ -80,6 +80,13 @@ body {
 
 }
 
+.carousel-caption-centre {
+    left: 20%;
+    top: 15%;
+    text-align: left;
+
+}
+
 .carousel-title {
     padding: 5px;
     font-size: 5rem;

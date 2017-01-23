@@ -29,7 +29,11 @@
         {% else %}
         <div class="carousel-item">
             <img src="{{photo.url}}">
+            {% if item.centre_text %}
+            <div class="carousel-caption-centre">
+            {% else %}
             <div class="carousel-caption">
+            {% endif %}
                 <h4 class="carousel-title">{{item.title}}</h4>
                 <p class="carousel-blurb">{{item.caption}}</p>
             </div>
