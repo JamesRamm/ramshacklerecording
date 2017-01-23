@@ -65,6 +65,9 @@ class ProductVariant(models.Model):
         populate_from=('page', 'ref'),
         )
 
+    def get_product_title(self):
+        return self.page.title
+
 class ProductImage(Orderable):
 
     page = ParentalKey(Product, related_name='images')

@@ -1,10 +1,15 @@
+from django.utils.module_loading import import_string
+from django.conf import settings
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from basket.models import BasketItem
 from basket.serializers import BasketItemSerializer
 from basket import utils
-from products.models import ProductVariant
+
+PRODUCT_VARIANT_MODEL = settings.get('PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
+ProductVariant = import_string(PRODUCT_VARIANT_MODEL)
+
 
 @api_view(["GET"])
 @permission_classes([permissions.AllowAny])

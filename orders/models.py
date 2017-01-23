@@ -1,5 +1,6 @@
 from django.db import models
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from orders.app_settings import PRODUCT_VARIANT_MODEL
 
 class Address(models.Model):
     name = models.CharField(max_length=64)
@@ -50,7 +51,7 @@ class Order(models.Model):
         return total
 
 class OrderItem(models.Model):
-    product = models.ForeignKey('products.ProductVariant', on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(PRODUCT_VARIANT_MODEL, on_delete=models.DO_NOTHING)
     quantity = models.IntegerField(default=1)
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
 
@@ -59,4 +60,4 @@ class OrderItem(models.Model):
         return self.quantity * self.product.price
 
     def __str__(self):
-        return "{} x {}".format(self.quantity, self.product.page.title)
+        return "{} x {}".format(self.quantity, self.product.get_product_title())

@@ -1,12 +1,14 @@
 from django.db import models
+from django.conf import settings
 from products.models import ProductVariant
 
+PRODUCT_VARIANT_MODEL = settings.get('PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
 
 class BasketItem(models.Model):
     basket_id = models.CharField(max_length=32)
     date_added = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default=1)
-    product = models.ForeignKey('products.ProductVariant', unique=False)
+    product = models.ForeignKey(PRODUCT_VARIANT_MODEL, unique=False)
 
     class Meta:
         ordering = ['date_added']
