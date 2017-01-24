@@ -1,4 +1,4 @@
-from django.utils.module_loading import import_string
+from django.apps import apps
 from django.conf import settings
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions, status
@@ -8,7 +8,7 @@ from basket.serializers import BasketItemSerializer
 from basket import utils
 
 PRODUCT_VARIANT_MODEL = getattr(settings, 'PRODUCT_VARIANT_MODEL', 'products.ProductVariant')
-ProductVariant = import_string(PRODUCT_VARIANT_MODEL)
+ProductVariant = apps.get_model(*PRODUCT_VARIANT_MODEL.split('.'))
 
 
 @api_view(["GET"])
