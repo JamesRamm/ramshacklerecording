@@ -72,7 +72,7 @@ function post(url, data, isForm = false) {
 }
 
 export function get_basket() {
-  return get("/api/get_basket")
+  return get("/api/get_basket/")
 
 }
 

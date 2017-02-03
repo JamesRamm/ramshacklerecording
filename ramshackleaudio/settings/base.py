@@ -54,12 +54,13 @@ INSTALLED_APPS = [
     'webpack_loader',
     'storages',
 
+    'longclaw.products',
+    'longclaw.basket',
+    'longclaw.checkout',
+    'longclaw.orders',
+
     'home',
     'search',
-    'products',
-    'basket',
-    'checkout',
-    'orders',
     'projects',
 ]
 

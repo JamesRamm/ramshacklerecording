@@ -9,12 +9,12 @@ export const BasketTable = ({basketData, onClose, onCheckout, onRemoveItem}) => 
         else {
             let rows = basketData.items.map(item => (
                 <tr key={item.id}>
-                    <td><a href={`/shop/${item.product.page.slug}`}>{item.product.page.title}</a></td>
+                    <td><a href={`/shop/${item.variant.product.slug}`}>{item.variant.product.title}</a></td>
                     <td>{item.quantity}</td>
                     <td>{item.price.toLocaleString('en-EN', {style: 'currency', currency: 'GBP'})}</td>
                     <td>{item.total.toLocaleString('en-EN', {style: 'currency', currency: 'GBP'})}</td>
                     <td>
-                      <a className="nav-link" onClick={() => onRemoveItem(item.product.id, item.quantity)}>
+                      <a className="nav-link" onClick={() => onRemoveItem(item.variant.id, item.quantity)}>
                         <i className="fa fa-trash"></i>
                       </a>
                     </td>

@@ -9,8 +9,8 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
-from basket import urls as basket_urls
-from checkout import urls as checkout_urls
+from longclaw.basket import urls as basket_urls
+from longclaw.checkout import urls as checkout_urls
 from projects import urls as projects_urls
 
 urlpatterns = [

@@ -4,7 +4,7 @@ import { Modal, Button, ButtonToolbar, Table } from 'react-bootstrap';
 const OrderReview = ({basketData, shippingCost, basketTotal}) => {
   let rows = basketData.items.map(item => (
       <tr key={item.id}>
-          <td><a href={`/shop/${item.product.page.slug}`}>{item.product.page.title}</a></td>
+          <td><a href={`/shop/${item.variant.product.slug}`}>{item.variant.product.title}</a></td>
           <td>{item.quantity}</td>
           <td>£{item.total}</td>
       </tr>

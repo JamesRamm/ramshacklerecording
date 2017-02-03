@@ -90,6 +90,7 @@ export function fetchShippingCost(address){
 
 export function fetchBasket() {
     return dispatch => {
+        console.log("FETCH BASKET")
         dispatch(requestBasket());
         return get_basket()
             .then(json => {
