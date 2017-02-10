@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
     'wagtail.contrib.modeladmin',
+    'wagtail.contrib.wagtailstyleguide',
 
     'modelcluster',
     'taggit',
@@ -112,7 +113,12 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # The below requires DATABASE_URL env. var to be set (e.g. postgres:///ramshackleaudio)
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_DIR, 'ramshackleaudio.db')
+    }
+}
 
 
 
@@ -166,6 +172,10 @@ WEBPACK_LOADER = {
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "ramshackleaudio"
+
+# Longclaw settings
+
+PAYMENT_GATEWAY = 'longclaw.checkout.gateways.BraintreePayment'
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

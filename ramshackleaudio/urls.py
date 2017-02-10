@@ -11,6 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
 from longclaw.basket import urls as basket_urls
 from longclaw.checkout import urls as checkout_urls
+from longclaw.orders import urls as orders_urls
 from projects import urls as projects_urls
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(basket_urls)),
     url(r'^api/', include(checkout_urls)),
+    url(r'^api/', include(orders_urls)),
     url(r'^api/', include(projects_urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),

@@ -11,6 +11,8 @@ from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
+from longclaw.products.models import Product
+
 class ProjectIndex(Page):
     pass
 
@@ -19,7 +21,7 @@ class SchematicIndex(Page):
 
 class ProjectProduct(models.Model):
 
-    product = models.ForeignKey('products.Product', related_name="+")
+    product = models.ForeignKey(Product, related_name="+")
     project = ParentalKey('Project', related_name="project_product_relationship")
 
     panels = [
