@@ -1,6 +1,7 @@
 import braintree from 'braintree-web';
-import {get_token} from '../api';
 
+// *****************************************
+// Wrap braintree js functions as promises
 export function braintreeClientCreate(token){
     return new Promise(function(resolve, reject){
         braintree.client.create({
@@ -41,9 +42,10 @@ function tokenize(hostedFieldsInstance){
         hostedFieldsInstance.tokenize((err, data) => {
             if (err) return reject(err);
             resolve(data)
-        })
-    })
+        });
+    });
 }
+//************************************************** */
 
 export function fetchToken(hostedFieldsInstance){
     return dispatch => {
@@ -72,12 +74,12 @@ export function fetchToken(hostedFieldsInstance){
     }
 }
 
-export function setupBraintree(styles, fields){
+export function setupBraintree(styles, fields, getToken){
     return dispatch => {
         dispatch({
             type: 'REQUEST_START'
         })
-        return get_token()
+        return getToken()
             .then(data => braintreeClientCreate(data.token))
             .then((client) => {
                 dispatch({
@@ -104,19 +106,18 @@ export function setupBraintree(styles, fields){
     }
 }
 
-export function setupBraintreePaypal(totalAmount, 
+export function setupBraintreePaypal(getToken,
+                                     totalAmount, 
                                      paypalButton,
                                      handleSubmit,
                                      currency='GBP',
                                      enableShippingAddress=true,
                                      shippingAddressEditable=true){
-    console.log(paypalButton)
-    console.log(paypalButton.addEventListener)
     return dispatch => {
         dispatch({
             type: 'REQUEST_START'
         })
-        return get_token()
+        return getToken()
             .then(data => braintreeClientCreate(data.token))
             .then(client => braintreePaypalCreate(client))
             .then(paypalInstance => paypalButton.addEventListener('click', 
@@ -127,7 +128,14 @@ export function setupBraintreePaypal(totalAmount,
                         currency: currency,
                         enableShippingAddress: enableShippingAddress,
                         shippingAddressEditable: shippingAddressEditable
-                    }, (err, tokenPayload) => handleSubmit(err, tokenPayload));
+                    }, (err, tokenPayload) => {
+                        if (!err) {
+                            handleSubmit(tokenPayload);
+                        }
+                        else {
+                            console.log(err)
+                        }
+                    });
                 })
             )
             .then(() => {
@@ -137,12 +145,12 @@ export function setupBraintreePaypal(totalAmount,
     }
 }
 
-export function setupBraintreeDropIn(containerId, totalAmount, onPaymentMethodReceived, currency='GBP'){
+export function setupBraintreeDropIn(getToken, containerId, totalAmount, onPaymentMethodReceived, currency='GBP'){
     return dispatch => {
         dispatch({
             type: 'REQUEST_START'
         })
-        return get_token()
+        return getToken()
             .then(
                 data => {
                     braintree.setup(data.token, 'dropin', {

@@ -11,13 +11,13 @@ from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
-from longclaw.products.models import Product
+from longclaw.longclawproducts.models import Product
 
 class ProjectIndex(Page):
-    pass
+    subpage_types = ["projects.Project"]
 
 class SchematicIndex(Page):
-    pass
+    subpage_types = ["projects.Schematic"]
 
 class ProjectProduct(models.Model):
 
@@ -32,7 +32,7 @@ class ProjectTag(TaggedItemBase):
     content_object = ParentalKey('Project', related_name='tagged_items')
 
 class Project(Page):
-
+    parent_page_types = ["projects.ProjectIndex"]
     description = RichTextField()
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
@@ -62,6 +62,7 @@ class SchematicTag(TaggedItemBase):
     content_object = ParentalKey('Schematic', related_name='tagged_items')
 
 class Schematic(Page):
+    parent_page_types = ["projects.SchematicIndex"]
     author = models.CharField(max_length=32, blank=True, null=True)
     company = models.CharField(max_length=32, blank=True, null=True)
     tags = ClusterTaggableManager(through=SchematicTag, blank=True)

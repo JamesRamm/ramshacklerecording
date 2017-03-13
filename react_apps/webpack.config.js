@@ -9,6 +9,7 @@ module.exports = {
     vendors: [
       'react', 'redux', 'react-redux', 'redux-thunk', 
       'redux-form', 'isomorphic-fetch', 'whatwg-fetch',
+      'braintree-web'
     ]
   },
   output: {

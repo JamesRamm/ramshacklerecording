@@ -1,23 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setupBraintreeDropIn, teardownBraintreeDropIn  } from './actions'
+import { setupBraintreeDropIn, teardownBraintreeDropIn } from './actions';
 
 class BraintreeDropIn extends Component {
 
   componentDidMount() {
-    this.props.setupBraintreeDropIn(this.props.containerId,
-                                    this.props.totalAmount,
-                                    this.props.handleSubmit)
+    this.props.setupBraintreeDropIn(
+      this.props.getToken,
+      this.props.containerId,
+      this.props.totalAmount,
+      this.props.handleSubmit);
   }
 
   componentWillUnmount() {
-    this.props.braintreeCheckout.teardown(this.props.teardownBraintreeDropIn)
+    this.props.braintreeCheckout.teardown(this.props.teardownBraintreeDropIn);
   }
 
   render() {
     return (
-      <form onSubmit={(e) => {e.preventDefault();}} >
-      <h5>Please enter your payment details or pay with PayPal:</h5>
+      <form onSubmit={(e) => { e.preventDefault(); }} >
+        <h5>Please enter your payment details or pay with PayPal:</h5>
         <div id={this.props.containerId}>{this.props.loading ? <span className="text-center"><i className='fa fa-spinner fa-spin fa-2x fa-fw'></i></span> : null}</div>
         <div className="row">
           <div className="col-md-6 offset-md-6">
@@ -38,7 +40,8 @@ BraintreeDropIn.propTypes = {
   loading: PropTypes.bool.isRequired,
   braintreeReady: PropTypes.bool.isRequired,
   totalAmount: PropTypes.number.isRequired,
-  containerId: PropTypes.string
+  containerId: PropTypes.string,
+  getToken: PropTypes.func.isRequired
 };
 
 BraintreeDropIn.defaultProps = {

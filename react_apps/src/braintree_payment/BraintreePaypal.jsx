@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from 'redux-form';
 import braintree from 'braintree-web';
-import { get_token } from '../api';
-import { setupBraintreePaypal, fetchToken } from './actions'
+import { setupBraintreePaypal, fetchToken } from './actions';
 
 class BraintreePaypalButton extends Component {
   
   componentDidMount(){
-    this.props.setupBraintreePaypal(this.props.totalAmount, 
+    this.props.setupBraintreePaypal(this.props.getToken,
+                                    this.props.totalAmount, 
                                     this.refs.paypalButton,
                                     this.props.handleSubmit,
                                     this.props.currency,
@@ -26,7 +26,8 @@ class BraintreePaypalButton extends Component {
         className={this.props.buttonClass}
         disabled={!this.props.braintreeReady}
       >
-        {this.props.buttonText}
+        {this.props.braintreeReady ? this.props.buttonText :
+          <i className="fa fa-refresh fa-spin fa-fw text-center" />}
       </button>
     )
 
@@ -45,7 +46,8 @@ BraintreePaypalButton.propTypes = {
   loading: PropTypes.bool.isRequired,
   totalAmount: PropTypes.number.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  setupBraintreePaypal: PropTypes.func.isRequired
+  setupBraintreePaypal: PropTypes.func.isRequired,
+  getToken: PropTypes.func.isRequired
 }
 
 BraintreePaypalButton.defaultProps = {

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
     'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
     'wagtail.contrib.wagtailstyleguide',
 
     'modelcluster',
@@ -55,10 +56,14 @@ INSTALLED_APPS = [
     'webpack_loader',
     'storages',
 
-    'longclaw.products',
-    'longclaw.basket',
-    'longclaw.checkout',
-    'longclaw.orders',
+    'longclaw.longclawsettings',
+    'longclaw.longclawshipping',
+    'longclaw.longclawproducts',
+    'products',
+    'longclaw.longclawbasket',
+    'longclaw.longclawcheckout',
+    'longclaw.longclaworders',
+    'longclaw.longclawstats',
 
     'home',
     'search',
@@ -93,7 +98,8 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages'
+                'django.contrib.messages.context_processors.messages',
+                'longclaw.longclawsettings.context_processors.currency',
                 ],
         },
     },
@@ -175,8 +181,8 @@ WAGTAIL_SITE_NAME = "ramshackleaudio"
 
 # Longclaw settings
 
-PAYMENT_GATEWAY = 'longclaw.checkout.gateways.BraintreePayment'
-
+PAYMENT_GATEWAY = 'longclaw.longclawcheckout.gateways.braintree.PaypalVZeroPayment'
+PRODUCT_VARIANT_MODEL = 'products.ProductVariant'
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://ramshackleaudio.com'

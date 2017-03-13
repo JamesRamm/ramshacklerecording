@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from 'redux-form';
 import braintree from 'braintree-web';
-import { get_token } from '../api';
-import { setupBraintree, fetchToken } from './actions'
+import { setupBraintree, fetchToken } from './actions';
 
 const styles = {
   'input': {
@@ -47,7 +46,7 @@ class BraintreePayment extends Component {
 
 
   componentDidMount() {
-    this.props.setupBraintree(styles, fields)
+    this.props.setupBraintree(styles, fields, this.props.getToken)
   }
 
   handleChange(event, field) {
@@ -132,6 +131,10 @@ class BraintreePayment extends Component {
       </div>
     )
   }
+}
+
+BraintreePayment.propTypes = {
+  getToken: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => (

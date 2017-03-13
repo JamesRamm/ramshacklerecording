@@ -8,10 +8,6 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-b)$r4rivrz#67+3us^kl(ivwfuv)uve=z4cews6jroxqmgvkd'
 
-# API key for stripe
-STRIPE_SECRET = "sk_test_shlULUhrRaODUqTf8Wh9uRlj"
-STRIPE_PUBLISHABLE = "pk_test_TjAq3bVrsvrJ8uzvuN6baDOO"
-
 # Braintree settings
 BRAINTREE_MERCHANT_ID = 'wzj6jygytbsgrm7t'
 BRAINTREE_PUBLIC_KEY = 'jqkky54x7yvgc33z'

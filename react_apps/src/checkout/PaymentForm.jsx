@@ -1,6 +1,8 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import OrderReview from './OrderReview';
 import BraintreeDropIn from '../braintree_payment/BraintreeDropIn';
+import BraintreePaypalButton from '../braintree_payment/BraintreePaypal';
+import { get_token } from '../api';
 
 const PaymentForm = ({basketData, shippingCost, onClose, handleSubmit}) => {
   let basketTotal = basketData.items.reduce((total, item) => total+item.total, 0)
@@ -13,10 +15,14 @@ const PaymentForm = ({basketData, shippingCost, onClose, handleSubmit}) => {
         basketTotal={basketTotal}
       />
       <hr />
-      <BraintreeDropIn
+      <BraintreePaypalButton
+        currency='GBP'
         onClose={onClose}
         totalAmount={basketTotal + shippingCost}
         handleSubmit={handleSubmit}
+        enableShippingAddress={false}
+        shippingAddressEditable={false}
+        getToken={get_token}
       />
     </div>
   )

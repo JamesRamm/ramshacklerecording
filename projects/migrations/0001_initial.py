@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('products', '__first__'),
+        ('longclawproducts', '__first__'),
         ('wagtailcore', '0030_index_on_pagerevision_created_at'),
         ('taggit', '0002_auto_20150616_2121'),
         ('wagtailimages', '0015_fill_filter_spec_field'),
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
             name='ProjectProduct',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='products.Product')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to='longclawproducts.Product')),
                 ('project', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='project_product_relationship', to='projects.Project')),
             ],
         ),

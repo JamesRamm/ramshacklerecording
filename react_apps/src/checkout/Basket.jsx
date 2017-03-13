@@ -73,7 +73,7 @@ class Basket extends Component {
                             },
                             shipping_rate: shipping.rate,
                             email: shipping.address.email,
-                            payment_method_nonce: data.nonce
+                            transaction_id: data.nonce
                         });
                       }
                     }

@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import { Button, ButtonToolbar, Table } from 'react-bootstrap';
-import BraintreePaypalButton from '../braintree_payment/BraintreePaypal';
 
 export const BasketTable = ({basketData, onClose, onCheckout, onRemoveItem}) => {
     if (basketData.items.length === 0){

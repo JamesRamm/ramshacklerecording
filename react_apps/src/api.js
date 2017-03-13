@@ -77,7 +77,11 @@ export function get_basket() {
 }
 
 export function get_shipping(country_code, shipping_option='standard'){
-  return get(`/api/shipping/?country_code=${country_code}&shipping_option=${shipping_option}`, {country_code, shipping_option})
+  return get(`/api/shipping/cost/?country_code=${country_code}&shipping_option=${shipping_option}`, {country_code, shipping_option})
+}
+
+export function get_shipping_countries() {
+  return get('/api/shipping/countries/');
 }
 
 /*
@@ -91,8 +95,8 @@ export function get_shipping(country_code, shipping_option='standard'){
  *  data.token: Stripe token of client card
  * 
  */
-export function post_order(data){
-  return post('/api/payment/', data);
+export function post_order_prepaid(data){
+  return post('/api/order_prepaid/', data);
 }
 
 export function add_to_basket(variant_id){

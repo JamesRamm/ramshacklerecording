@@ -9,19 +9,13 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
-from longclaw.basket import urls as basket_urls
-from longclaw.checkout import urls as checkout_urls
-from longclaw.orders import urls as orders_urls
+from longclaw import urls as longclaw_urls
 from projects import urls as projects_urls
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(basket_urls)),
-    url(r'^api/', include(checkout_urls)),
-    url(r'^api/', include(orders_urls)),
-    url(r'^api/', include(projects_urls)),
-
+    url(r'', include(longclaw_urls)),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 

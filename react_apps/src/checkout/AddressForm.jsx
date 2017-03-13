@@ -1,16 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, Form, reduxForm } from 'redux-form';
+import { get_shipping_countries } from '../api';
 
 const BootstrapTextInput = (field) => (
   <input {...field.input} type="text" className="form-control"></input>
 )
 
-const submit = (values, dispatch) => {
-  console.log(values)
-}
-
 let AddressForm = class extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingCountries: true,
+      countries: []
+    };
+  }
+
+  componentDidMount() {
+    get_shipping_countries().then(data =>
+      this.setState({
+        loadingCountries: false,
+        countries: data
+      })
+    );
+  }
 
   render() {
     return (
@@ -51,7 +65,16 @@ let AddressForm = class extends Component {
           <div className="col-md-6">
             <div className="form-group">
               <label className="control-label">Country</label>
-              <Field name="addressCountry" component={BootstrapTextInput} type="text" />                
+              <Field
+                  name="addressCountry"
+                  component="select"
+                  className="form-control"
+                >
+                  <option value=""> </option>
+                  {this.state.countries.map(country => (
+                    <option value={country[1]} key={country[1]}>{country[0]}</option>
+                  ))}
+                </Field>
               <span className="helper-text"></span>
             </div>
           </div>
@@ -64,12 +87,12 @@ let AddressForm = class extends Component {
           </div>
         </div>
         <div className="row">
-        <div className="col-md-6 offset-md-6">
-          <div className="btn-toolbar">
-            <button id="close" className="btn btn-secondary" onClick={this.props.handleCancel}>Cancel</button>
-            <button type="submit" id="submit" className="btn btn-primary">Proceed</button>
+          <div className="col-md-6 offset-md-6">
+            <div className="btn-toolbar">
+              <button id="close" className="btn btn-secondary" onClick={this.props.handleCancel}>Cancel</button>
+              <button type="submit" id="submit" className="btn btn-primary">Proceed</button>
+            </div>
           </div>
-        </div>
         </div>
       </form>
     )
