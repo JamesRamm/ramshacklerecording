@@ -96,7 +96,7 @@ export function get_shipping_countries() {
  * 
  */
 export function post_order_prepaid(data){
-  return post('/api/order_prepaid/', data);
+  return post('/api/checkout/prepaid/', data);
 }
 
 export function add_to_basket(variant_id){
@@ -112,5 +112,5 @@ export function get_total_items(){
 }
 
 export function get_token(){
-  return get('/api/create_token/');
+  return get('/api/checkout/token/');
 }
