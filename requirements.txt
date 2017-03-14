@@ -82,7 +82,6 @@ rcssmin==1.0.6
 requests==2.13.0
 requests-toolbelt==0.7.0
 rjsmin==1.0.12
-ruamel-yaml===-VERSION
 shellescape==3.4.1
 simplegeneric==0.8.1
 simplejson==3.10.0
