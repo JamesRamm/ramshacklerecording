@@ -15,7 +15,6 @@ chardet==2.3.0
 click==6.7
 clint==0.5.1
 codecov==2.0.5
-conda==4.2.12
 cookiecutter==1.5.0
 coverage==4.3.3
 decorator==4.0.11
