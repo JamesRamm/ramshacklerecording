@@ -46,7 +46,7 @@ Jinja2==2.9.5
 jinja2-time==0.2.0
 lazy-object-proxy==1.2.2
 livereload==2.5.1
--e git+https://github.com/JamesRamm/longclaw.git
+-e git+https://github.com/JamesRamm/longclaw.git@d5f8bf2cf95333763e8ae017f2d43fd907304eb4#egg=longclaw
 Markdown==2.6.7
 MarkupSafe==0.23
 mccabe==0.6.1
