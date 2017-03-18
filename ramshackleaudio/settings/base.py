@@ -181,7 +181,6 @@ WAGTAIL_SITE_NAME = "ramshackleaudio"
 
 # Longclaw settings
 
-PAYMENT_GATEWAY = 'longclaw.longclawcheckout.gateways.braintree.PaypalVZeroPayment'
 PRODUCT_VARIANT_MODEL = 'products.ProductVariant'
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
