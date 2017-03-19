@@ -37,7 +37,7 @@ Jinja2==2.9.5
 jinja2-time==0.2.0
 lazy-object-proxy==1.2.2
 livereload==2.5.1
--e git+https://github.com/JamesRamm/longclaw.git@fbd0f02d08aca674c1c6a01129c77dce47d58d57#egg=longclaw
+-e git+https://github.com/JamesRamm/longclaw.git#egg=longclaw
 packaging==16.8
 pathtools==0.1.2
 pbr==1.10.0
