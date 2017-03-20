@@ -130,9 +130,11 @@ export function setupBraintreePaypal(getToken,
                         shippingAddressEditable: shippingAddressEditable
                     }, (err, tokenPayload) => {
                         if (!err) {
+                            console.log("ALL OK", tokenPayload)
                             handleSubmit(tokenPayload);
                         }
                         else {
+                            console.log("NOT GOOD")
                             console.log(err)
                         }
                     });

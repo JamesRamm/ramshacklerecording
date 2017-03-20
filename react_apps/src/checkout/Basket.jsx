@@ -57,6 +57,8 @@ class Basket extends Component {
                     shippingCost={this.props.shippingData.rate}
                     onClose={this.props.close}
                     handleSubmit={(data) => {
+                        console.log("SUBMITTED!")
+                        console.log(data)
                         let shipping = this.props.shippingData;
                         this.props.submitOrder({
                             address: {
