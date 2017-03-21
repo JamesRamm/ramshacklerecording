@@ -134,8 +134,7 @@ export function setupBraintreePaypal(getToken,
                             handleSubmit(tokenPayload);
                         }
                         else {
-                            console.log("NOT GOOD")
-                            console.log(err)
+                            console.log("NOT GOOD", err)
                         }
                     });
                 })
