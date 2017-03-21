@@ -124,17 +124,18 @@ export function setupBraintreePaypal(getToken,
                 function (){
                     paypalInstance.tokenize({
                         flow: 'checkout',
+                        intent: 'sale',
                         amount: totalAmount,
                         currency: currency,
+                        displayName: 'Ramshackle Audio',
                         enableShippingAddress: enableShippingAddress,
                         shippingAddressEditable: shippingAddressEditable
                     }, (err, tokenPayload) => {
                         if (!err) {
-                            console.log("ALL OK", tokenPayload)
                             handleSubmit(tokenPayload);
                         }
                         else {
-                            console.log("NOT GOOD", err)
+                            console.log(err)
                         }
                     });
                 })
