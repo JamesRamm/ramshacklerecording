@@ -14,16 +14,6 @@ class Basket extends Component {
         this.props.fetchBasket()
     }
 
-    submitOrder(){
-        this.props.submitOrder({
-            shipping: 'standard',
-            ip: this.props.checkoutToken.token.client_ip,
-            token: this.props.checkoutToken.token.id,
-            email: this.props.checkoutToken.token.email,
-            address: this.props.checkoutToken.addresses
-        })
-    }
-
     renderModalPage() {
         let page = null;
         let title = null;
@@ -75,7 +65,7 @@ class Basket extends Component {
                             },
                             shipping_rate: shipping.rate,
                             email: shipping.address.email,
-                            transaction_id: data.nonce
+                            payment_method_nonce: data.nonce
                         });
                       }
                     }

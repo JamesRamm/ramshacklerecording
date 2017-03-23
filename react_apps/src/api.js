@@ -92,9 +92,13 @@ export function get_shipping_countries() {
  *  data.address.billing: Object containing billing address
  *  data.ip: IP address of client
  *  data.email: Email address of client
- *  data.token: Stripe token of client card
+ *  data.payment_method_nonce: Stripe token of client card
  * 
  */
+export function post_order(data){
+  return post('/api/checkout/', data)
+}
+
 export function post_order_prepaid(data){
   return post('/api/checkout/prepaid/', data);
 }
