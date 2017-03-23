@@ -1,4 +1,4 @@
-import { get_basket, get_shipping, post_order_prepaid, add_to_basket, get_total_items, remove_from_basket } from '../api';
+import { get_basket, get_shipping, post_order, add_to_basket, get_total_items, remove_from_basket } from '../api';
 
 export const constants = {
     REQUEST_BASKET: 'REQUEST_BASKET',
@@ -101,7 +101,7 @@ export function fetchBasket() {
 export function submitOrder(data) {
     return dispatch => {
         dispatch(requestSubmitOrder());
-        return post_order_prepaid(data)
+        return post_order(data)
             .then(json => {
                 dispatch(receiveSubmitOrder(json));
                 dispatch(nextPage());
