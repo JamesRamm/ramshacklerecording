@@ -20,8 +20,8 @@ const PaymentForm = ({basketData, shippingCost, onClose, handleSubmit}) => {
         onClose={onClose}
         totalAmount={basketTotal + shippingCost}
         handleSubmit={handleSubmit}
-        enableShippingAddress={false}
-        shippingAddressEditable={false}
+        enableShippingAddress={true}
+        shippingAddressEditable={true}
         getToken={get_token}
       />
     </div>

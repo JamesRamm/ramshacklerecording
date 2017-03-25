@@ -11,6 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
 from longclaw import urls as longclaw_urls
 from projects import urls as projects_urls
+from wagmail import urls as wagmail_urls
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
 
     url(r'', include(wagtail_urls)),
+    url(r'^wagmail/$', include(wagmail_urls)),
 
 ]
 

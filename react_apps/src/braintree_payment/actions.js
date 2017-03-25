@@ -117,6 +117,7 @@ export function setupBraintreePaypal(getToken,
         dispatch({
             type: 'REQUEST_START'
         })
+        console.log("SHIPPING ", enableShippingAddress)
         return getToken()
             .then(data => braintreeClientCreate(data.token))
             .then(client => braintreePaypalCreate(client))
