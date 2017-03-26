@@ -10,8 +10,63 @@ import PaymentForm from './PaymentForm';
 
 class Basket extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            addressErrors: {
+                name: false,
+                line1: false,
+                city: false,
+                postcode: false,
+                country: false,
+                email: false
+            }
+        }
+    }
+
     open() {
         this.props.fetchBasket()
+        this.setState({
+            addressErrors: {
+                name: false,
+                line1: false,
+                city: false,
+                postcode: false,
+                country: false,
+                email: false
+            }
+        });
+    }
+
+    handleAddressSubmit(values, dispatch) {
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const errors = {
+            name: values.name ? false : true,
+            line1: values.addressLine1 ? false : true,
+            city: values.addressCity ? false : true,
+            postcode: values.addressPostcode ? false : true,
+            country: values.addressCountry ? false : true,
+            email: !regex.test(values.email)
+        };
+        if (errors.name || errors.line1 || errors.city || errors.postcode || errors.country || errors.email) {
+            this.setState({
+                addressErrors: errors
+            });
+        }
+        else {
+            this.setState({
+                addressErrors: {
+                    name: false,
+                    line1: false,
+                    city: false,
+                    postcode: false,
+                    country: false,
+                    email: false
+                }
+            })
+            this.props.submitAddress(values); 
+            this.props.fetchShippingCost(values);
+        }
     }
 
     renderModalPage() {
@@ -32,9 +87,10 @@ class Basket extends Component {
 
             case 2:
                 page = (
-                    <AddressForm 
+                    <AddressForm
+                        errors={this.state.addressErrors}
                         handleCancel={this.props.close}
-                        onSubmit={(values, dispatch) => {this.props.submitAddress(values); this.props.fetchShippingCost(values)}}
+                        onSubmit={(values, dispatch) => this.handleAddressSubmit(values, dispatch)}
                     />
                 );
                 title = 'Shipping Details';
