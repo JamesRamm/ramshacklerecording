@@ -35,7 +35,7 @@ export function basketData(state = initialState.basketData, action) {
         case constants.RECEIVE_REMOVE_BASKET_ITEM:
             return {
                 ...state,
-                ...action.data
+                results: action.data
             };
 
         case constants.RECEIVE_TOTAL_ITEMS:

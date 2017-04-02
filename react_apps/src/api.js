@@ -75,7 +75,7 @@ function del(url, data, isForm = false) {
   return fetch(
     url,
     {
-      method: 'DEL',
+      method: 'DELETE',
       headers: getRequestHeaders(isForm),
       credentials: 'include',
       body: isForm ? data : JSON.stringify(data)
