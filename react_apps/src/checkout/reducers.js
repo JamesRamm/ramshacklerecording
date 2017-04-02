@@ -5,7 +5,7 @@ import { constants } from './actions';
 
 
 const initialState = {
-    basketData: { count: 0, items: [] },
+    basketData: { count: 0, results: [] },
     shippingData: { rate: null,
                     address: {} },
     order: {
@@ -23,19 +23,19 @@ const initialState = {
 export function basketData(state = initialState.basketData, action) {
     switch (action.type) {
         case constants.RECEIVE_BASKET:
-            return { ...state, items: action.data };
+            return { ...state, ...action.data };
 
         case constants.RECEIVE_SUBMIT_ORDER:
-            return { ...state, items: [], count: 0 };
+            return { ...state, results: [], count: 0 };
 
         case constants.RECEIVE_SUBMIT_BASKET_ITEM:
-            return { ...state, count: state.count + 1, items: action.data }
+            console.log(action.data)
+            return { ...state, results: action.data }
 
         case constants.RECEIVE_REMOVE_BASKET_ITEM:
             return {
                 ...state,
-                count: action.data.reduce((quantity, item) => quantity + item.quantity, 0),
-                items: action.data
+                ...action.data
             };
 
         case constants.RECEIVE_TOTAL_ITEMS:

@@ -7,3 +7,8 @@ media/
 node_modules/
 static/
 .directory
+.vscode/
+*.cfg
+*.db
+tags
+src/

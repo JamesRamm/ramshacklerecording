@@ -2,11 +2,11 @@ import React, {Component, PropTypes} from 'react';
 import { Button, ButtonToolbar, Table } from 'react-bootstrap';
 
 export const BasketTable = ({basketData, onClose, onCheckout, onRemoveItem}) => {
-    if (basketData.items.length === 0){
+    if (basketData.count === 0){
             return (<p>You have no items in your basket!</p>)
         }
         else {
-            let rows = basketData.items.map(item => (
+            let rows = basketData.results.map(item => (
                 <tr key={item.id}>
                     <td><a href={`/shop/${item.variant.product.slug}`}>{item.variant.product.title}</a></td>
                     <td>{item.quantity}</td>
@@ -20,7 +20,7 @@ export const BasketTable = ({basketData, onClose, onCheckout, onRemoveItem}) => 
                 </tr>
             ))
 
-            let basketTotal = basketData.items.reduce((total, item) => total+item.total, 0)
+            let basketTotal = basketData.results.reduce((total, item) => total+item.total, 0)
 
             return (
                 <div>

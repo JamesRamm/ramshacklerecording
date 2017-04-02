@@ -71,9 +71,18 @@ function post(url, data, isForm = false) {
     .then(parseJSON);
 }
 
-export function get_basket() {
-  return get("/api/get_basket/")
-
+function del(url, data, isForm = false) {
+  return fetch(
+    url,
+    {
+      method: 'DEL',
+      headers: getRequestHeaders(isForm),
+      credentials: 'include',
+      body: isForm ? data : JSON.stringify(data)
+    }
+  )
+    .then(checkStatus)
+    .then(parseJSON);
 }
 
 export function get_shipping(country_code, shipping_option='standard'){
@@ -103,16 +112,20 @@ export function post_order_prepaid(data){
   return post('/api/checkout/prepaid/', data);
 }
 
+export function get_basket() {
+  return get("/api/basket/");
+}
+
 export function add_to_basket(variant_id){
-  return post('/api/add_to_basket/', {variant_id});
+  return post('/api/basket/', {variant_id});
 }
 
 export function remove_from_basket(variant_id, quantity){
-  return post('/api/remove_from_basket/', {variant_id, quantity});
+  return del(`/api/basket/${variant_id}/`, {quantity});
 }
 
 export function get_total_items(){
-  return get('/api/basket_total_items/');
+  return get('/api/basket/count/');
 }
 
 export function get_token(){

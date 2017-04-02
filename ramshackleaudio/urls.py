@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
@@ -16,14 +17,15 @@ from wagmail import urls as wagmail_urls
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'', include(longclaw_urls)),
+    url(r'^contact/$', TemplateView.as_view(template_name="contact.html")),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-
     url(r'^search/$', search_views.search, name='search'),
-
-    url(r'', include(wagtail_urls)),
     url(r'^wagmail/$', include(wagmail_urls)),
+    url(r'', include(longclaw_urls)),
+    url(r'', include(wagtail_urls)),
+    
+    
 
 ]
 

@@ -103,8 +103,6 @@ class Basket extends Component {
                     shippingCost={this.props.shippingData.rate}
                     onClose={this.props.close}
                     handleSubmit={(data) => {
-                        console.log("SUBMITTED!")
-                        console.log(data)
                         let shipping = this.props.shippingData;
                         this.props.submitOrder({
                             address: {
@@ -158,12 +156,24 @@ class Basket extends Component {
     }
 
     render() {
+        let count = 0;
+        if (!this.props.loading) {
+            if (this.props.basketData.results.length > 0) {
+                count = this.props.basketData.results.reduce((prev, current) => prev + current.quantity, 0)
+            }
+            else {
+                count = this.props.basketData.count;
+            }
+        }
         return (
             <div>
                 <a className="nav-link" onClick={this.open.bind(this)}>
                     <i className="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;
                     <span className="tag tag-pill tag-default" id="basket-item-count">
-                        { this.props.loading ? <i className={`fa fa-refresh fa-spin fa-fw`}></i> : this.props.basketData.count}
+                        { this.props.loading ?
+                        <i className={`fa fa-refresh fa-spin fa-fw`}></i>
+                        :
+                        count}
                     </span>
                 </a>
                 {this.renderModalPage()}
