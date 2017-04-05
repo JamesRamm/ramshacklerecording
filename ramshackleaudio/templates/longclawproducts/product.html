@@ -45,7 +45,7 @@
                     <span class="tag tag-danger">Sold out!</span>                    
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-secondary" onclick="request_stock({{variant.id}})">Request</button>
+                    <button class="btn btn-secondary" onclick="Products.requestProduct({{variant.id}})">Request</button>
                 </div>
                 <div class="col-md-2">
                 </div>
@@ -59,7 +59,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block extra_js %}
-<script type="text/javascript" src="{% static 'js/basket.js' %}"></script>
 {% endblock %}

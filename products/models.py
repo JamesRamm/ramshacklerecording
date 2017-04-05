@@ -1,5 +1,7 @@
 from django.db import models
-from longclaw.longclawproducts.models import ProductVariantBase
+from longclaw.longclawproducts.models import ProductVariantBase, Product
 
 class ProductVariant(ProductVariantBase):
     stock = models.IntegerField(default=0)
+    request_count = models.IntegerField(default=0)
+

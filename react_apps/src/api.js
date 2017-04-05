@@ -128,6 +128,10 @@ export function get_total_items(){
   return get('/api/basket/count/');
 }
 
+export function request_product(variant_id){
+  return post(`/api/basket/${variant_id}/request/`, {})
+}
+
 export function get_token(){
   return get('/api/checkout/token/');
 }

@@ -8,6 +8,7 @@
  */ 
 import store from '../checkout/store';
 import { submitAddBasketItem, submitRemoveBasketItem } from '../checkout/actions';
+import { request_product } from '../api';
 
 /*
  * Dispatch the 'addBasketItem' action
@@ -18,4 +19,8 @@ export function addBasketItem(variant_id){
 
 export function removeBasketItem(variant_id){
     store.dispatch(submitRemoveBasketItem(variant_id));
+}
+
+export function requestProduct(variant_id){
+    return request_product(variant_id);
 }
