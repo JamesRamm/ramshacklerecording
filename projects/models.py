@@ -77,6 +77,11 @@ class Schematic(Page):
                                  on_delete=models.SET_NULL,
                                  related_name='+')
 
+    ramshackle_project = models.ForeignKey('projects.Project',
+                                           null=True,
+                                           blank=True,
+                                           related_name='schematics')
+
     schematic_url = models.URLField(blank=True, null=True)
 
     content_panels = Page.content_panels + [
