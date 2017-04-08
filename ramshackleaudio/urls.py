@@ -17,7 +17,6 @@ from wagmail import urls as wagmail_urls
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^contact/', TemplateView.as_view(template_name="contact.html")),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
