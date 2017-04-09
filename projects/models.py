@@ -80,7 +80,8 @@ class Schematic(Page):
     ramshackle_project = models.ForeignKey('projects.Project',
                                            null=True,
                                            blank=True,
-                                           related_name='schematics')
+                                           related_name='schematics',
+                                           on_delete=models.SET_NULL)
 
     schematic_url = models.URLField(blank=True, null=True)
 
