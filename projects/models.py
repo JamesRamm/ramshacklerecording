@@ -3,11 +3,12 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
-from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -20,7 +21,6 @@ class SchematicIndex(Page):
     subpage_types = ["projects.Schematic"]
 
 class ProjectProduct(models.Model):
-
     product = models.ForeignKey(Product, related_name="+")
     project = ParentalKey('Project', related_name="project_product_relationship")
 
@@ -33,15 +33,16 @@ class ProjectTag(TaggedItemBase):
 
 class Project(Page):
     parent_page_types = ["projects.ProjectIndex"]
-    description = RichTextField()
+    description = RichTextField(blank=True, null=True)
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
+        ('document', DocumentChooserBlock())
     ])
     tags = ClusterTaggableManager(through=ProjectTag, blank=True)
 
-    @property           
+    @property
     def products(self):
         products = [
             # Grabs rows from the relationship index and formats them correctly.
@@ -54,7 +55,7 @@ class Project(Page):
     content_panels = Page.content_panels + [
         FieldPanel('description'),
         StreamFieldPanel('body'),
-        InlinePanel('project_product_relationship'),
+        InlinePanel('project_product_relationship', label='products'),
         FieldPanel('tags'),
     ]
 
