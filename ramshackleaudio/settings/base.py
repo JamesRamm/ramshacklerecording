@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'webpack_loader',
     'storages',
+    'wagalytics',
+    'wagtailfontawesome',
 
     'longclaw.longclawsettings',
     'longclaw.longclawshipping',
@@ -187,3 +189,7 @@ PRODUCT_VARIANT_MODEL = 'products.ProductVariant'
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://ramshackleaudio.com'
 
+# Wagalytics settings
+
+GA_KEY_FILEPATH = os.path.join(PROJECT_DIR, 'static', 'js', 'Ramshackle Audio-d22a86c868db.json')
+GA_VIEW_ID = 'ga:147570772'
