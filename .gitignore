@@ -5,7 +5,7 @@ __pycache__/
 *.js.*
 media/
 node_modules/
-static/
+/static/
 .directory
 .vscode/
 *.cfg

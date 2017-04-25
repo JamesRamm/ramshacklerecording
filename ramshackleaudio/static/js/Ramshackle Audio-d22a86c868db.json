@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ramshackle-audio",
+  "private_key_id": "d22a86c868db18762c7cc1539db5a622c118eff9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCYTBCV08a3JZ4z\nRJ3B728uduK90hYJB4b/ggWlLJBlQGE82kgC2D5Gx5OAd1wLM/0iKnSfLGeqzurD\nlaXI7NsAnvVFNEEhA7vPM3KqFnb+1js78k6J0bnRzSqYpbIGrij30vB2+b/bHYki\noo6t46L3kW1gwsvVE1NSlQGqEnVZFWtyPM3bLjVLfw+KwF1KNuvDXbIAo3lFEEjY\n+bvXno8b9s+RL9M36KFOZqXoO8av739FK0UMnuJM7DvegD4FyIZoLNsGZWcY2J4i\n/dPU6ZsqtkthHBBcXkwz0pjYzAi9besKZRTPzmbLuBujxdPYZ7WwsBVam2Uv4bPY\nPpz6MOmzAgMBAAECggEAHCFImvP/60o2e0+8N9sK1TE+VkNcsJREWiNg+Y5OqXUH\nwN6smGHqttYcJ4lkZelXYx0mZ1QjXchUUoXslj0xgl7Z/MtXEEsJQI9HKaV2m0Fk\ntYDfAtPLF7ZmnMVWKae3h3bd1Yvx5P4Cm3QdGH9IVaP16P5x+cxVApblNM2uASML\nvhb2hZo+vn8dLVTwUVfkw30KNEH8qL+5P+fJMIpNSGNlSatXlTpNcFg42U2MAOEi\n6gScP9qbNJZtFgA/LaXFVBCqxXpKSzC+6Ew0kX7B1WZz0zfXte8a1wYBHafvAaLa\nyzh0WDQHYYCOJ8gP1UEPHGEhXYKap3l3gGSTasc4UQKBgQDJI+E1fDiS1CpHsR8e\nIC9k9e5eqWKfY09uKh/qYKuVtT/bqtHPOL0uK8vK1R5dX2maihyIPQZIoGXh9ZnZ\nycfTrqI7Lq8zaVW2bJMNF39AbO3L72pdEv+EQHAS1MJS6q7t1BpOTgkAnVnMGt5K\nP0OanVHRxGFtff5b/G+OC0t3iQKBgQDB1dcGWej1oGzgHnGmPCYlo6D8/HBEbrg/\nNWqpK5Zen5w/0iLbyCTxcLEJRccescKHrMrjYCXOXxEBm0zEP/ViYsqUi99nUc1t\n+2vr0bX+s19HxISSR2LeEbGSpgL4mPNirhIbcheh6e8T8/PVMldsyIpdE/712nKq\nZ0JMousMWwKBgBkZYxb7g0u/Me90SL/HoGJm1fH2DRp6mATVONpUadTqoydUL44+\nNE04pduPsJRSPalNJrZRdyFE8rG5phMpPMhLeG8OKkquEEYNUmRF1FlDvoC+RXWL\n01q7d8DBz+Xs5xtCZm3zCuiKuhPgHnEBZ/w5OWaFrOqu2Di+TWVaP3aRAoGBAIMv\nuhbXVR6gk+9fS2XJwbupsfRm2YjHMrW87lJOaLfj6HkdPHBpVe9+aKMw8aHphxIS\nNUKMOSoiFz1yIROVgfszh43f2LRxncp45kK1LSqTtcG51Eu4Osa3TOpGpy4fPmIk\nE6c1oZ7419E2Q2mgZ6D9XP+/38f/L6n6ttltTg2PAoGBAJ3h0E6xx9/7GOXyFbSv\n6g2NXgctXtN0xFXDfrOt05scV8CXBNgmVmU0LdADB8H+yu77fTDzE/CvlU9iVoQS\n8HsfB3bKAM91TxD96TGqaG2ZhZhEuDng/XVp/R3HU2IhyMqGOSTRV7r+x2KCuZDv\nSHwEwV7u1oP5N+eqGPqYJd9U\n-----END PRIVATE KEY-----\n",
+  "client_email": "ramshackle-recording@ramshackle-audio.iam.gserviceaccount.com",
+  "client_id": "101498809910453231851",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ramshackle-recording%40ramshackle-audio.iam.gserviceaccount.com"
+}
