@@ -13,6 +13,7 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 from longclaw.longclawproducts.models import Product
+from wagtailmath.blocks import MathBlock
 
 class ProjectIndex(Page):
     subpage_types = ["projects.Project"]
@@ -38,7 +39,8 @@ class Project(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
-        ('document', DocumentChooserBlock())
+        ('document', DocumentChooserBlock()),
+        ('equation', MathBlock())
     ])
     tags = ClusterTaggableManager(through=ProjectTag, blank=True)
 

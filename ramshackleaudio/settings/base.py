@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'longclaw.longclaworders',
     'longclaw.longclawstats',
     'wagmail',
+    'wagtailmath',
 
     'home',
     'search',

@@ -39,6 +39,7 @@ lazy-object-proxy==1.2.2
 livereload==2.5.1
 -e git+https://github.com/JamesRamm/longclaw.git#egg=longclaw
 -e git+https://github.com/JamesRamm/wagmail.git#egg=wagmail
+wagtailmath>=0.1.0
 packaging==16.8
 pathtools==0.1.2
 pbr==1.10.0
