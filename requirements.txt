@@ -39,6 +39,7 @@ lazy-object-proxy==1.2.2
 livereload==2.5.1
 -e git+https://github.com/JamesRamm/longclaw.git#egg=longclaw
 -e git+https://github.com/JamesRamm/wagmail.git#egg=wagmail
+-e git+https://github.com/JamesRamm/wagalytics.git#egg=wagalytics
 wagtailmath>=1.0.0
 packaging==16.8
 pathtools==0.1.2
@@ -70,7 +71,6 @@ tox==2.6.0
 twine==1.8.1
 Unidecode==0.4.20
 wagtail==1.9
-wagalytics>=0.6
 wagtailfontawesome>=1.0.6
 watchdog==0.8.3
 wcwidth==0.1.7
