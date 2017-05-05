@@ -58,6 +58,7 @@ class Project(Page):
         FieldPanel('description'),
         StreamFieldPanel('body'),
         InlinePanel('project_product_relationship', label='products'),
+        InlinePanel('schematics', label="Schematics"),
         FieldPanel('tags'),
     ]
 

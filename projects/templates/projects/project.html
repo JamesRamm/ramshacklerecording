@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailmath %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 project-main">
+            <article>
+            {% for block in page.body %}
+                {% if block.block_type == 'heading' %}
+                    <h1>{{ block.value }}</h1>
+                {% else %}
+                    <section class="block-{{ block.block_type }}">
+                        {% include_block block %}
+                    </section>
+                {% endif %}
+            {% endfor %}
+            </article>
+        </div>
+        <div class="col-sm-3 offset-sm-1 project-sidebar">
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+{% block extra_js %}
+<script src="{% mathjax %}"></script>
+{% endblock %}

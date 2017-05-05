@@ -5,7 +5,7 @@ import BraintreePaypalButton from '../braintree_payment/BraintreePaypal';
 import { get_token } from '../api';
 
 const PaymentForm = ({basketData, shippingCost, onClose, handleSubmit}) => {
-  let basketTotal = basketData.items.reduce((total, item) => total+item.total, 0)
+  let basketTotal = basketData.results.reduce((total, item) => total+item.total, 0)
 
   return (
     <div>
