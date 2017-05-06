@@ -14,6 +14,8 @@
 
         {# Global stylesheets #}
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css" integrity="sha256-y4TDcAD4/j5o4keZvggf698Cr9Oc7JZ+gGMax23qmVA=" crossorigin="anonymous" />        
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/ramshackleaudio.css' %}">
@@ -24,21 +26,28 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <!-- style="background-image: url('{% static "img/hip-square.png" %}'); background-repeat: repeat;" -->
+    <body class="{% block body_class %}{% endblock %}" style="background-image: url('{% static "img/ep_naturalwhite.png" %}'); background-repeat: repeat;">
         {% wagtailuserbar %}
-        <div class="ui top stackable compact borderless menu">
-            <a class="item" href="/products">Shop</a>
-            <a class="item" href="/projects">Projects</a>
-            <div class="item">
-                <a href="/"><img src="{% static "img/logo_opt.svg" %}" height="70px" widht="auto"></a>
+        <div class="ui centered grid">
+            <div class="center aligned column">
+                <div class="ui top stackable compact borderless menu">
+                    <a class="item" href="/products">Shop</a>
+                    <a class="item" href="/projects">Projects</a>
+                    <div class="item">
+                        <a href="/"><img src="{% static "img/logo_opt.svg" %}" height="70px" widht="auto"></a>
+                    </div>
+                    <a class="item" href="/contact-us/">Contact</a>
+                    <a class="item" id="checkout-app"></a>
+                </div>   
             </div>
-            <a class="item" href="/contact-us/">Contact</a>
-            <a class="item" id="checkout-app"></a>
-        </div>        
+        </div>     
         {% block content %}{% endblock %}
 
         {# Global javascript #}
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>        
         <script src="{% static 'semantic.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendors.bundle.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/checkout.bundle.js' %}"></script>

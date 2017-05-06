@@ -7,56 +7,75 @@
 {% block body_class %}template-productpage{% endblock %}
 
 {% block content %}
-<br/>
+
 {% csrf_token %}
-<div class="container">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active">{{ page.title }}</li>
-    </ol>
-    <div class="row">
-        <div class="col-md-6">
+<div class="ui doubling stackable grid container">
+    <div class="ui breadcrumb">
+        <a href="/" class="section">Home</a>
+        <div class="divider"> / </div>
+        <a href="/" class="section">Shop</a>
+        <div class="divider"> / </div>
+        <div class="active section">{{ page.title }}</div>
+    </div>
+    <div class="two column row">
+        <div class="column">
             {% if page.images %}
                 {% image page.first_image.image original as photo %}
+                <div class="ui segment">
                 <img src="{{ photo.url }}" alt="F76" width="100%">
+                </div>
             {% endif %}
         </div>
-        <div class="col-md-6">
-            <h1>{{ page.title }}</h1>            
-            {% for variant in page.variants.all %}
-            <div class="row">
-                <div class="col-md-3">
-                    {{ variant.description|richtext }}
-                </div>
-                <div class="col-md-2">
-                    £{{ variant.price }}
-                </div>
-                {% if variant.stock > 0 %}
-                <div class="col-md-2">                    
-                    <span class="tag tag-success">In stock</span>                    
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-primary" id="add-button" data-variant-id="{{variant.id}}" onclick="Products.addBasketItem({{variant.id}})">Add</button>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary" onclick="Products.removeBasketItem({{variant.id}})">Remove</button>
-                </div>
-                {% else %}
-                <div class="col-md-2">                    
-                    <span class="tag tag-danger">Sold out!</span>                    
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-secondary" onclick="Products.requestProduct({{variant.id}})">Request</button>
-                </div>
-                <div class="col-md-2">
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-            <br>
+        <div class="column">
+            <h2>{{ page.title }}</h2>
+            <p>{{ page.description|richtext }}</p>
 
-            <h3>Description</h3>
-            {{ page.description|richtext }}
+            {% if page.variants.all|length > 1 %}
+                <small>Select an option:</small>
+                <table class="ui raised segment table">
+                    <tbody>
+                        {% for variant in page.variants.all %}
+                        <tr>
+                            <td>{{ variant.ref }}</td>
+                            <td>£{{ variant.price }}</td>
+                                {% if variant.stock > 0 %}
+                            <td>
+                                <button
+                                    class="ui button"
+                                    id="add-button"
+                                    data-variant-id="{{ variant.id }}"
+                                    onclick="Products.addBasketItem({{ variant.id }})"
+                                >
+                                Add
+                                </button>
+                            </td>
+                            <td><a class="ui green label">In stock</a></td>
+                                {% else %}
+                                <td><button class="ui button" onclick="Products.requestProduct({{variant.id}})">Request</button></td>   
+                                <td><a class="ui red label">Sold out</a></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+            {% with page.variants.first as variant %}
+            {% if variant.stock > 0 %}
+                <h3>£{{ variant.price }}</h3>
+                <button
+                    class="ui button"
+                    id="add-button"
+                    data-variant-id="{{ variant.id }}"
+                    onclick="Products.addBasketItem({{ variant.id }})"
+                >
+                Add
+                </button>
+            {% else %}
+                <h3>£{{ variant.price }} <small><a class="ui red label">Sold out</a></small></h3>
+                <button class="ui button" onclick="Products.requestProduct({{variant.id}})">Request</button>
+            {% endif %}
+            {% endwith %}
+            {% endif %}            
         </div>
     </div>
 </div>

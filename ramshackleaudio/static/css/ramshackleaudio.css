@@ -9,6 +9,25 @@ body {
     color: #6c5a49;
 }
 
+.inherit-color {
+    color: inherit;
+}
+
+.overlay { 
+   position: absolute; 
+   bottom: 10%; 
+   left: 10%; 
+   width: 100%; 
+}
+
+.overlay > span { 
+   color: white; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px; 
+}
+
 .masthead.segment {
     min-height: 700px;
     padding: 1em 0em;

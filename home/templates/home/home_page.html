@@ -1,20 +1,36 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load ramshackletags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
 
 <div class="ui three column doubling stackable grid container">
-  {% for product in products %}
-    <div class="column">
-        <div class="ui segment">
-            {% image product.specific.first_image.image original as photo %}
-            <img src="{{ photo.url }}" style="width: 100%; height: auto;">
-        </div>    
-    </div>
-  {% endfor %}
+  {% with products|rows:"3" as product_columns %}
   
+    <div class="column">
+        {% for product in product_columns.0 %}
+        {% image product.specific.first_image.image original as photo %}
+        {% include 'home/inc/product_card.html' with product=product photo=photo %}    
+        {% endfor %}
+    </div>
+  
+    <div class="column">
+        {% for product in product_columns.1 %}
+        {% image product.specific.first_image.image original as photo %}
+        {% include 'home/inc/product_card.html' with product=product photo=photo %} 
+        {% endfor %}
+    </div>
+  
+    <div class="column">
+        {% for product in product_columns.2 %}
+        {% image product.specific.first_image.image original as photo %}
+        {% include 'home/inc/product_card.html' with product=product photo=photo %}   
+        {% endfor %}
+    </div>
+    {% endwith %}
 </div>
 
 {% endblock %}
