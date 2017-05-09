@@ -19,7 +19,11 @@
         <article class="ui piled segment">
         {% for block in page.body %}
             {% if block.block_type == 'heading' %}
-                <h1>{{ block.value }}</h1>
+                <h1 class="ui header">{{ block.value }}</h1>
+            {% elif block.block_type == 'image' %}
+                <div class="ui centered rounded image">
+                {% image block.value width-80% %}
+                </div>
             {% else %}
                 <section class="block-{{ block.block_type }}">
                     {% include_block block %}
@@ -71,6 +75,7 @@
     </div>
     <div class="ui segment">
         <h4>Other Links</h4>
+        {% if page.octopart_bom %}
         <a href="{{page.octopart_bom}}">
             <h4 class="ui header">
                 <i class="setting icon"></i>
@@ -79,6 +84,7 @@
                 </div>
             </h4>
         </a>
+        {% endif %}
     </div>
   </div>
 </div>
