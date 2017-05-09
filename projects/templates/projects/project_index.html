@@ -11,7 +11,8 @@
 </h1>
 <div class="ui grid container">
   <div class="ui relaxed divided selection list">
-  {% for post in page.get_children %}  
+  {% for post in page.get_children %}
+  {% if post.live %}
     <div class="item">
       <i class="right triangle icon"></i>
       <div class="content">
@@ -19,6 +20,7 @@
         <div class="description">{{post.specific.tagline}}</div>
       </div>
     </div>  
+  {% endif %}
   {% endfor %}
   </div>
 </div>
