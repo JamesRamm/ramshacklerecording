@@ -17,13 +17,15 @@
     </div>
     <div class="ui ten wide column">
         <article class="ui piled segment">
+            <h1 class="ui centered header">{{page.title}}</h1>
         {% for block in page.body %}
             {% if block.block_type == 'heading' %}
-                <h1 class="ui header">{{ block.value }}</h1>
-            {% elif block.block_type == 'image' %}
-                <div class="ui centered big rounded image">
-                {% image block.value %}
-                </div>
+                <h3 class="ui header">{{ block.value }}</h3>
+            {% elif block.block_type == 'image' %}                
+                {% image block.value original as photo %}
+                <a href="{{photo.url}}" >
+                    <img src="{{photo.url}}" class="ui medium centered bordered rounded image">
+                </a>
             {% else %}
                 <section class="block-{{ block.block_type }}">
                     {% include_block block %}
@@ -53,7 +55,7 @@
         {% for schem in page.schematics.all %}
         {% if schem.schematic.image %}
         {% image schem.schematic.image width-24 as photo %}
-        <a href="{{ photo.url }}" target="_blank">
+        <a href="{{ schem.schematic.image.url }}" target="_blank">
             <h5 class="ui header">
                 <img class="ui image" src="{{ photo.url }}">
                 <div class="content">
