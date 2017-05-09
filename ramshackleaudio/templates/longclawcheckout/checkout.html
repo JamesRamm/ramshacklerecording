@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load ramshackletags %}
+
+{% block content %}
+<div class="ui stackable container">
+    <div class="ui steps">
+    <div class="active step">
+        <i class="truck icon"></i>
+        <div class="content">
+        <div class="title">Shipping</div>
+        <div class="description">Enter your shipping address</div>
+        </div>
+    </div>
+    <div class="step">
+        <i class="payment icon"></i>
+        <div class="content">
+        <div class="title">Payment</div>
+        <div class="description">Enter payment information</div>
+        </div>
+    </div>
+    <div class="disabled step">
+        <i class="info icon"></i>
+        <div class="content">
+        <div class="title">Confirm Order</div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
