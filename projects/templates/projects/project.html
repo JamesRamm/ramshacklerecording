@@ -21,8 +21,8 @@
             {% if block.block_type == 'heading' %}
                 <h1 class="ui header">{{ block.value }}</h1>
             {% elif block.block_type == 'image' %}
-                <div class="ui centered rounded image">
-                {% image block.value width-80% %}
+                <div class="ui centered big rounded image">
+                {% image block.value %}
                 </div>
             {% else %}
                 <section class="block-{{ block.block_type }}">
