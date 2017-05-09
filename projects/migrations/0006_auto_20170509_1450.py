@@ -29,38 +29,6 @@ class Migration(migrations.Migration):
                 ('image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image')),
             ],
         ),
-        # migrations.RemoveField(
-        #     model_name='schematic',
-        #     name='document',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematic',
-        #     name='image',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematic',
-        #     name='page_ptr',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematic',
-        #     name='ramshackle_project',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematic',
-        #     name='tags',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematicindex',
-        #     name='page_ptr',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematictag',
-        #     name='content_object',
-        # ),
-        # migrations.RemoveField(
-        #     model_name='schematictag',
-        #     name='tag',
-        # ),
         migrations.AddField(
             model_name='project',
             name='octopart_bom',
