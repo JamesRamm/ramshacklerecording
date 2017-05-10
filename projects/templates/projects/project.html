@@ -4,8 +4,9 @@
 
 {% load wagtailmath %}
 {% block content %}
-<div class="ui grid container">
-    <div class="ui three wide column">
+<div class="ui fluid container">
+    <div class="ui grid">
+    <div class="ui four wide column">
         <div class="ui segment">
             <h4>Tags</h4>
             {% for tag in page.tags.all %}
@@ -15,7 +16,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="ui ten wide column">
+    <div class="ui eight wide column">
         <article class="ui piled segment">
             <h1 class="ui centered header">{{page.title}}</h1>
         {% for block in page.body %}
@@ -35,7 +36,7 @@
         </article>
     </div>
 
-  <div class="ui three wide column">
+  <div class="ui four wide column">
     <div class="ui segment">
         <h4>Products</h4>
         {% for p in page.project_product_relationship.all %}
@@ -97,6 +98,7 @@
         </a>
         {% endif %}
     </div>
+  </div>
   </div>
 </div>
 
