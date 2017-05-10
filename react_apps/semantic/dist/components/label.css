@@ -918,16 +918,16 @@ a.ui.basic.pink.label:hover {
 
 .ui.brown.labels .label,
 .ui.brown.label {
-  background-color: #A5673F !important;
-  border-color: #A5673F !important;
+  background-color: #6c5a49 !important;
+  border-color: #6c5a49 !important;
   color: #FFFFFF !important;
 }
 
 /* Link */
 .ui.brown.labels .label:hover,
 a.ui.brown.label:hover {
-  background-color: #975b33 !important;
-  border-color: #975b33 !important;
+  background-color: #5e4d3d !important;
+  border-color: #5e4d3d !important;
   color: #FFFFFF !important;
 }
 
@@ -939,20 +939,20 @@ a.ui.brown.label:hover {
 
 /* Ribbon */
 .ui.brown.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #4e4134 !important;
 }
 
 /* Basic */
 .ui.basic.brown.label {
   background-color: #FFFFFF !important;
-  color: #A5673F !important;
-  border-color: #A5673F !important;
+  color: #6c5a49 !important;
+  border-color: #6c5a49 !important;
 }
 .ui.basic.brown.labels a.label:hover,
 a.ui.basic.brown.label:hover {
   background-color: #FFFFFF !important;
-  color: #975b33 !important;
-  border-color: #975b33 !important;
+  color: #5e4d3d !important;
+  border-color: #5e4d3d !important;
 }
 
 /*--- Grey ---*/
@@ -980,7 +980,7 @@ a.ui.grey.label:hover {
 
 /* Ribbon */
 .ui.grey.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #4e4134 !important;
 }
 
 /* Basic */
@@ -1021,7 +1021,7 @@ a.ui.black.label:hover {
 
 /* Ribbon */
 .ui.black.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #4e4134 !important;
 }
 
 /* Basic */

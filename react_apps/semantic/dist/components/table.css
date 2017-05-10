@@ -707,10 +707,10 @@
 
 /* Brown */
 .ui.brown.table {
-  border-top: 0.2em solid #A5673F;
+  border-top: 0.2em solid #6c5a49;
 }
 .ui.inverted.brown.table {
-  background-color: #A5673F !important;
+  background-color: #6c5a49 !important;
   color: #FFFFFF !important;
 }
 

@@ -347,14 +347,14 @@ i.inverted.circular.pink.icon {
 
 /* Brown */
 i.brown.icon {
-  color: #A5673F !important;
+  color: #6c5a49 !important;
 }
 i.inverted.brown.icon {
   color: #D67C1C !important;
 }
 i.inverted.bordered.brown.icon,
 i.inverted.circular.brown.icon {
-  background-color: #A5673F !important;
+  background-color: #6c5a49 !important;
   color: #FFFFFF !important;
 }
 

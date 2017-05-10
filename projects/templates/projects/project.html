@@ -73,6 +73,16 @@
             </h4>
         </a>
         {% endif %}
+        {% elif schem.schematic.document %}
+        <a href="{{schem.schematic.document}}" target="_blank">
+            <h4 class="ui header">
+                <i class="document icon"></i>
+                <div class="content">
+                    {{schem.schematic.name}}
+                </div>
+            </h4>
+        </a>
+        {% endif %}
         {% endfor %}
     </div>
     <div class="ui segment">
