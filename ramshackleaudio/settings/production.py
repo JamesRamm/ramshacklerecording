@@ -3,8 +3,8 @@ import os
 from .base import *
 
 ENV = os.environ.copy()
+print(ENV)
 SECRET_KEY = ENV.get('SECRET_KEY')
-
 DEBUG = False
 
 # db_from_env = dj_database_url.config()
