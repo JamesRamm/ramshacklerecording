@@ -13,10 +13,18 @@ body {
     color: inherit;
 }
 
+.ui.segment.product-card {
+    padding: 0rem 0rem;
+}
+
+.ui.segment.product-card > img {
+    border-radius: 3px;
+}
+
 .overlay { 
    position: absolute; 
-   bottom: 10%; 
-   left: 10%; 
+   top: 2%; 
+   left: 5%; 
    width: 100%; 
 }
 
@@ -24,8 +32,8 @@ body {
    color: white; 
    letter-spacing: -1px;  
    background: rgb(0, 0, 0); /* fallback color */
-   background: rgba(0, 0, 0, 0.7);
-   padding: 10px; 
+   background: rgba(0, 0, 0, 0.5);
+   padding: 5px; 
 }
 
 .masthead.segment {

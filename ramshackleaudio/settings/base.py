@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'wagalytics',
     'wagtailfontawesome',
 
+    'longclaw.longclawcore',
     'longclaw.longclawsettings',
     'longclaw.longclawshipping',
     'longclaw.longclawproducts',
@@ -184,7 +185,8 @@ WEBPACK_LOADER = {
 WAGTAIL_SITE_NAME = "ramshackleaudio"
 
 # Longclaw settings
-PAYMENT_GATEWAY = 'longclaw.longclawcheckout.gateways.braintree.PaypalVZeroPayment'
+PAYMENT_GATEWAY = 'longclaw.longclawcheckout.gateways.braintree.BraintreePayment'
+BRAINTREE_SANDBOX = True
 PRODUCT_VARIANT_MODEL = 'products.ProductVariant'
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

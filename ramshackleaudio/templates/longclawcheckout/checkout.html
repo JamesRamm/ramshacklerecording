@@ -1,31 +1,50 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
-{% load ramshackletags %}
+{% load ramshackletags longclawcheckout_tags longclawcore_tags %}
 
 {% block content %}
 <div class="ui stackable container">
     <div class="ui steps">
-    <div class="active step">
-        <i class="truck icon"></i>
-        <div class="content">
-        <div class="title">Shipping</div>
-        <div class="description">Enter your shipping address</div>
+        <div class="active step">
+            <i class="truck icon"></i>
+            <div class="content">
+            <div class="title">Shipping</div>
+            <div class="description">Enter your shipping address</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="payment icon"></i>
+            <div class="content">
+            <div class="title">Payment</div>
+            <div class="description">Enter payment information</div>
+            </div>
+        </div>
+        <div class="disabled step">
+            <i class="info icon"></i>
+            <div class="content">
+            <div class="title">Confirm Order</div>
+            </div>
         </div>
     </div>
-    <div class="step">
-        <i class="payment icon"></i>
-        <div class="content">
-        <div class="title">Payment</div>
-        <div class="description">Enter payment information</div>
-        </div>
-    </div>
-    <div class="disabled step">
-        <i class="info icon"></i>
-        <div class="content">
-        <div class="title">Confirm Order</div>
-        </div>
-    </div>
-    </div>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ shipping_form.as_p }}
+        {{ checkout_form.as_p }}
+        <input type="submit" value="Place Order" class="submit" />
+    </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+{% gateway_client_js as scripts %}
+{% for js in scripts %}
+{{ js|safe }}
+{% longclaw_client_bundle %}
+{{ checkout_form.media }}
+<script type="text/javascript">
+initShippingOption('{% longclaw_api_url_prefix %}');
+</script>
+{% endfor %}
 {% endblock %}

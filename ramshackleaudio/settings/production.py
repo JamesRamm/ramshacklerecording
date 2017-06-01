@@ -3,7 +3,6 @@ import os
 from .base import *
 
 ENV = os.environ.copy()
-print(ENV)
 SECRET_KEY = ENV.get('SECRET_KEY')
 DEBUG = False
 
