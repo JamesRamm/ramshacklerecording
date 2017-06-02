@@ -6,3 +6,5 @@
 @brown: #6c5a49;
 @pageFont: 'Raleway', sans-serif;
 @headerFont: 'Raleway', sans-serif;
+@textColor: @primaryColor;
+@linkColor: @primaryColor;

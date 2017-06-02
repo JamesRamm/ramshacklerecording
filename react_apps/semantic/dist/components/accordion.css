@@ -33,7 +33,7 @@
   padding: 0.5em 0em;
   font-family: 'Raleway', sans-serif;
   font-size: 1em;
-  color: rgba(0, 0, 0, 0.87);
+  color: #6c5a49;
 }
 
 /* Content */
@@ -161,12 +161,12 @@
 .ui.styled.accordion .accordion .title:hover,
 .ui.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: #6c5a49;
 }
 .ui.styled.accordion .accordion .title:hover,
 .ui.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: #6c5a49;
 }
 
 /* Active */

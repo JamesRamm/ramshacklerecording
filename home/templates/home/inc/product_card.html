@@ -1,8 +1,26 @@
 {% load wagtailcore_tags %}
-
-<div class="ui segment product-card">
-    <a class="inherit-color" href="{% pageurl product %}">
-    <img src="{{ photo.url }}" style="width: 100%; height: auto;">
-    <h2 class="overlay"><span>{{ product.title }}</span></h2>
+<div class="ui raised fluid link card">
+    <a class="image" href="{% pageurl product %}">
+        {% if product.in_stock %}
+        <div class="ui right green tiny ribbon label">
+        <i class="check icon"> In Stock</i>
+        </div>
+        {% else %}
+        <div class="ui right red tiny ribbon label">
+        <i class="remove icon"> Sold Out</i>
+        </div>
+        {% endif %}
+        <img src="{{ photo.url }}" style="width: 100%; height: auto;">        
+      </a>
     </a>
-</div>   
+    <div class="content">
+        <h4>{{ product.title }}</h4>
+        {% if product.price_range.0 %}
+            {% if product.price_range.0 == product.price_range.1 %}
+            <p>{{currency_html_code|safe}}{{product.price_range.0}}</p>
+            {% else %}
+            <p>From {{currency_html_code|safe}}{{product.price_range.0}}-{{product.price_range.1}}
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
