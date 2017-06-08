@@ -4,7 +4,7 @@ from .base import *
 
 ENV = os.environ.copy()
 SECRET_KEY = ENV.get('SECRET_KEY')
-DEBUG = False
+DEBUG = True
 
 # db_from_env = dj_database_url.config()
 # DATABASES['default'].update(db_from_env)
