@@ -34,6 +34,11 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-primary" >Submit</button>
     </div>
+    <div class="g-recaptcha" data-sitekey="6Ld0CSMUAAAAANSf9fZD0u8x-k83vnVm_5SaHpQv"></div>
 </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}

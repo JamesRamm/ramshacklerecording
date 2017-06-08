@@ -21,11 +21,12 @@ let AddressForm = class extends Component {
   }
 
   componentDidMount() {
-    get_shipping_countries().then(data =>
+    get_shipping_countries().then(data => {
       this.setState({
         loadingCountries: false,
         countries: data
       })
+    }
     );
   }
 
@@ -88,11 +89,10 @@ let AddressForm = class extends Component {
                   name="addressCountry"
                   component="select"
                   className="form-control"
-                  error={this.props.errors.country}
                 >
-                  <option value=""> </option>
+                  <option value="">Choose a country...</option>
                   {this.state.countries.map(country => (
-                    <option value={country[1]} key={country[1]}>{country[0]}</option>
+                    <option value={country.iso} key={country.iso}>{country.name}</option>
                   ))}
                 </Field>
             </div>

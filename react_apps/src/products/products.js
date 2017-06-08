@@ -23,3 +23,4 @@ export function removeBasketItem(variant_id){
 
 export function requestProduct(variant_id){
     return request_product(variant_id);
+}

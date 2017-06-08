@@ -79,6 +79,7 @@ function receiveSubmitOrder(data){
 
 export function fetchShippingCost(address){
     return dispatch => {
+        console.log(address.addressCountry)
         dispatch(requestShippingCost());
         return get_shipping(address.addressCountry)
             .then(json => {
