@@ -3,11 +3,11 @@
 
 {% block content %}
 <br/>
-<div class="container">
+<div class="ui container">
     <h2>{{ page.title }}</h2>
     {{ page.intro|richtext }}
-    <form class="form-horizontal"  action="{% pageurl page %}" method="post">{% csrf_token %}
-    <fieldset>
+    <form  class="ui form"  action="{% pageurl page %}" method="post">
+    <!--<fieldset>
         <legend>{{ title }}</legend>
         {% for field in form %}
             {% if field.errors %}
@@ -30,11 +30,12 @@
                 </div>
             {% endif %}
         {% endfor %}
-    </fieldset>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary" >Submit</button>
-    </div>
+    </fieldset>-->
+    {% csrf_token %}
+    {{ form.as_p }}
     <div class="g-recaptcha" data-sitekey="6Ld0CSMUAAAAANSf9fZD0u8x-k83vnVm_5SaHpQv"></div>
+
+    <button type="submit" class="ui button submit" >Submit</button>
 </form>
 </div>
 {% endblock %}

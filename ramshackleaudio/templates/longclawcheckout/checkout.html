@@ -4,37 +4,27 @@
 {% load ramshackletags longclawcheckout_tags longclawcore_tags %}
 
 {% block content %}
-<div class="ui stackable container">
-    <div class="ui steps">
-        <div class="active step">
-            <i class="truck icon"></i>
-            <div class="content">
-            <div class="title">Shipping</div>
-            <div class="description">Enter your shipping address</div>
-            </div>
-        </div>
-        <div class="step">
-            <i class="payment icon"></i>
-            <div class="content">
-            <div class="title">Payment</div>
-            <div class="description">Enter payment information</div>
-            </div>
-        </div>
-        <div class="disabled step">
-            <i class="info icon"></i>
-            <div class="content">
-            <div class="title">Confirm Order</div>
-            </div>
-        </div>
-    </div>
+<br />
+    
+<form action="." method="post" class="ui form" id="checkout-form">
+<div class="ui container two column grid">
 
-    <form action="." method="post">
+    <div class="column">
+        <h4>Shipping Address</h4>
         {% csrf_token %}
         {{ shipping_form.as_p }}
         {{ checkout_form.as_p }}
-        <input type="submit" value="Place Order" class="submit" />
-    </form>
+        <input type="hidden" id="payment-method-nonce" name="payment_method_nonce"></input>
+    </div>
+    <div class="column">
+        <h4>Payment Details</h4>
+        <div id="dropin-container"></div>
+        <input type="submit" id="submit-button" value="Place Order" class="ui button submit" />
+    </div>
+
+    
 </div>
+    </form>
 {% endblock %}
 
 {% block extra_js %}
@@ -45,6 +35,20 @@
 {{ checkout_form.media }}
 <script type="text/javascript">
 initShippingOption('{% longclaw_api_url_prefix %}');
+var button = document.querySelector('#submit-button');
+
+braintree.dropin.create({
+    authorization: "{% gateway_token %}",
+    container: '#dropin-container'
+}, function (createErr, instance) {
+    button.addEventListener('click', function () {
+    instance.requestPaymentMethod(function (err, payload) {
+        // Submit payload.nonce to your server
+        $('#payment-method-nonce').val(payload.token);
+        document.getElementById("checkout-form").submit();
+    });
+    });
+});
 </script>
 {% endfor %}
 {% endblock %}
