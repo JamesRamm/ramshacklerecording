@@ -51,7 +51,7 @@
                             </td>
                             <td><a class="ui green label">In stock</a></td>
                                 {% else %}
-                                <td><button class="ui button" onclick="Products.requestProduct({{variant.id}})">Request</button></td>   
+                                <td><button class="ui button" onclick="Products.requestProduct({{variant.id}})">Request</button></td>
                                 <td><a class="ui red label">Sold out</a></td>
                             {% endif %}
                         </tr>
@@ -66,7 +66,7 @@
                     class="ui button"
                     id="add-button"
                     data-variant-id="{{ variant.id }}"
-                    onclick="Products.addBasketItem({{ variant.id }})"
+                    onclick="postItem({{variant.id}})"
                 >
                 Add
                 </button>
@@ -75,7 +75,7 @@
                 <button class="ui button" onclick="Products.requestProduct({{variant.id}})">Request</button>
             {% endif %}
             {% endwith %}
-            {% endif %}            
+            {% endif %}
         </div>
     </div>
 </div>

@@ -5,9 +5,8 @@ var BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
   context: __dirname,
   entry: {
-    checkout: './src/checkout/index.jsx',
     vendors: [
-      'react', 'redux', 'react-redux', 'redux-thunk', 
+      'react', 'redux', 'react-redux', 'redux-thunk',
       'redux-form', 'isomorphic-fetch', 'whatwg-fetch',
       'braintree-web'
     ]

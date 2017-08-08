@@ -9,6 +9,35 @@
 <form action="." method="post" class="ui form" id="checkout-form">
     <div class="ui container two column grid">
         <div class="column">
+            <h4 class="ui dividing header">Your Basket</h4>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Quantity</th>
+                      <th>Unit Price</th>
+                      <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in basket %}
+                        <tr>
+                          <td><a href="/shop/{{item.variant.product.slug}}">{{item.variant.product.title}}</a></td>
+                          <td>{{item.quantity}}</td>
+                          <td>{{item.price|currency}}</td>
+                          <td>{{item.total|currency}}</td>
+                          <td>
+                            <a class="nav-link" href="#" id="remove-item" data-quantity="{{item.quantity}}" data-variant="{{item.variant.id}}">
+                              <i class="trash icon"></i>
+                            </a>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="column">
             <h4 class="ui dividing header">Shipping Address</h4>
             {% csrf_token %}
             {% for field in shipping_form %}
@@ -31,9 +60,8 @@
                 </div>
                 {% endif %}
             {% endfor %}
-
             {% for field in checkout_form %}
-
+            <!-- purposefully ignoring different billing address option to simplify -->
             {% if field.name == 'different_billing_address' %}
             {% else %}
             {% if field.errors %}
@@ -53,10 +81,8 @@
             {% endfor %}
             <!-- hidden field for submitting the token back to the server. Name will vary depending on integration-->
             <input type="hidden" id="payment_method_nonce" name="payment_method_nonce"></input>
-        </div>
-        <div class="column">
-            <h4>Payment Details</h4>
-            <div id="dropin-container"></div>
+            <h4 class="ui dividing header">Payment Details</h4>
+                <div id="dropin-container"></div>
             <input type="submit" id="submit-button" value="Place Order" class="ui button submit" />
         </div>
     </div>
@@ -64,36 +90,63 @@
 {% endblock %}
 
 {% block extra_js %}
+<!--Load any client javascript provided by the payment gateway.
+I have chosen braintree as my gateway so the template tag below
+should give me a list of script tags which load the braintree
+SDK's
+-->
 {% gateway_client_js as scripts %}
 {% for js in scripts %}
-{{ js|safe }}
-{% longclaw_client_bundle %}
+    {{ js|safe }}
+{% endfor %}
+
+<!--Finally add the media from the checkout form.-->
 {{ checkout_form.media }}
 <script type="text/javascript">
-initShippingOption('{% longclaw_api_url_prefix %}');
-var button = document.querySelector('#submit-button');
 
-braintree.dropin.create({
-    authorization: "{% gateway_token %}",
-    container: '#dropin-container'
-}, function (createErr, instance) {
-    button.addEventListener('click', function (event) {
-      event.preventDefault();
-      if (instance){
-        instance.requestPaymentMethod(function (err, payload) {
-            // Submit payload.nonce to your server
-            if (err) {
-                // TODO: Handle this error
-                console.log(err);
-            }
-            else {
-                $('#payment_method_nonce').val(payload.nonce);
-                document.getElementById("checkout-form").submit();
-            }
+    //Initialize shipping options - this function is from the
+    //checkout form media.
+    initShippingOption('{% longclaw_api_url_prefix %}');
+
+    // Initialize the braintree dropin.
+    // The gateway token below is taken from the template tag provided by
+    // longclaw. This is calculated depending on the chosen
+    // PAYMENT_GATEWAY in the user settings.py
+    var button = document.querySelector('#submit-button');
+
+    braintree.dropin.create({
+        authorization: "{% gateway_token %}",
+        container: '#dropin-container'
+    }, function (createErr, instance) {
+        button.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (instance){
+            instance.requestPaymentMethod(function (err, payload) {
+                // Submit payload.nonce to your server
+                if (err) {
+                    // TODO: Handle this error
+                    console.log(err);
+                }
+                else {
+                    $('#payment_method_nonce').val(payload.nonce);
+                    document.getElementById("checkout-form").submit();
+                }
+            });
+        }
         });
-      }
     });
-});
+
+    // Basket table handlers - remove item etc..
+    $('#remove-item').on('click', function(event){
+        event.preventDefault();
+        var variant = event.currentTarget.dataset.variant;
+        longclawclient.basketDetail.del({
+            prefix: '{% longclaw_api_url_prefix %}',
+            urlParams: {
+                id: variant,
+                quantity: event.currentTarget.dataset.quantity
+            }
+        }).then(location.reload());
+    });
 </script>
-{% endfor %}
 {% endblock %}

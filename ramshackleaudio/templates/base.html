@@ -15,11 +15,11 @@
         {# Global stylesheets #}
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css" integrity="sha256-y4TDcAD4/j5o4keZvggf698Cr9Oc7JZ+gGMax23qmVA=" crossorigin="anonymous" />        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css" integrity="sha256-y4TDcAD4/j5o4keZvggf698Cr9Oc7JZ+gGMax23qmVA=" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/ramshackleaudio.css' %}">
-        
+
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -38,21 +38,29 @@
                         <a href="/"><img src="{% static "img/logo_opt.svg" %}" height="70px" widht="auto"></a>
                     </div>
                     <a class="item" href="/contact-us/">Contact</a>
-                    <a class="item" id="checkout-app"></a>
-                </div>   
+                    <a class="item nav-link" href="/checkout/">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>&nbsp;
+                        <span class="tag tag-pill tag-default" id="basket-item-count">
+                        </span>
+                    </a>
+                </div>
             </div>
-        </div>     
+        </div>
         {% block content %}{% endblock %}
 
         {# Global javascript #}
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
         <script src="{% static 'semantic.min.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/vendors.bundle.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/checkout.bundle.js' %}"></script>
+        <!-- I load the longclaw client library provided by the following
+        template tags. This will allow me to use JS to remove/change items
+        in the basket dynamically. Could be done just using jquery ajax calls
+        bu the client lib makes it easier.
+        -->
         {% longclaw_vendors_bundle %}
         {% longclaw_client_bundle %}
+        <script src="{% static 'js/ramshackleaudio.js' %}"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
