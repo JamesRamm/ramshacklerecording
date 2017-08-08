@@ -1,7 +1,10 @@
 from django import template
 import locale
 
-locale.setlocale(locale.LC_ALL, 'en_GB.utf8')
+try:
+    locale.setlocale(locale.LC_ALL, 'en_GB.utf8')
+except:
+    locale.setlocale(locale.LC_ALL, 'en_GB.ISO8859-1')
 register = template.Library()
 
 @register.filter()
