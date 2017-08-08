@@ -47,7 +47,7 @@ DEFAULT_TO_EMAIL = "ramshacklerecording@gmail.com"
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
+BRAINTREE_SANDBOX = False
 ALLOWED_HOSTS=["*"]
 
 try:
