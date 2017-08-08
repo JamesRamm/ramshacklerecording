@@ -64,7 +64,7 @@ class Basket extends Component {
                     email: false
                 }
             })
-            this.props.submitAddress(values); 
+            this.props.submitAddress(values);
             this.props.fetchShippingCost(values);
         }
     }
@@ -86,61 +86,9 @@ class Basket extends Component {
                 break;
 
             case 2:
-                page = (
-                    <AddressForm
-                        errors={this.state.addressErrors}
-                        handleCancel={this.props.close}
-                        onSubmit={(values, dispatch) => this.handleAddressSubmit(values, dispatch)}
-                    />
-                );
-                title = 'Shipping Details';
-                break;
-            
-            case 3:
-                page = (
-                <PaymentForm 
-                    basketData={this.props.basketData}
-                    shippingCost={this.props.shippingData.rate}
-                    onClose={this.props.close}
-                    handleSubmit={(data) => {
-                        let shipping = this.props.shippingData;
-                        this.props.submitOrder({
-                            address: {
-                                shipping_name: shipping.address.name,
-                                shipping_address_line1: shipping.address.addressLine1,
-                                shipping_address_city: shipping.address.addressCity,
-                                shipping_address_zip: shipping.address.addressPostcode,
-                                shipping_address_country: shipping.address.addressCountry,
-                                billing_name: shipping.address.name,
-                                billing_address_line1: '',
-                                billing_address_city: '',
-                                billing_address_zip: '',
-                                billing_address_country: ''
-                            },
-                            shipping_rate: shipping.rate,
-                            email: shipping.address.email,
-                            payment_method_nonce: data.nonce
-                        });
-                      }
-                    }
-                />
-                );
-                title = "Confirm And Pay";
-                break;
-
-            case 4:
-                page = (
-                    <OrderConfirmation
-                        email={this.props.shippingData.address.email}
-                        id = {this.props.order.id}
-                    />
-                );
-                title = 'Order Confirmation';
-                break;
-            default: 
-                page = null
-                title = null
-
+                window.location.href = '/checkout/';
+            default:
+                window.location.href = '/checkout/';
         }
 
         return (
