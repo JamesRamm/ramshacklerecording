@@ -5,26 +5,62 @@
 
 {% block content %}
 <br />
-    
+
 <form action="." method="post" class="ui form" id="checkout-form">
-<div class="ui container two column grid">
+    <div class="ui container two column grid">
+        <div class="column">
+            <h4 class="ui dividing header">Shipping Address</h4>
+            {% csrf_token %}
+            {% for field in shipping_form %}
+                {% if field.is_hidden %}
+                {{ field }}
+                {% else %}
+                {% if field.errors %}
+                <div class="field error">
+                {% else %}
+                <div class="field">
+                {% endif %}
+                    <label>{{ field.label_tag }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                    <div class="ui error message">
+                        <p>{{ field.errors }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
 
-    <div class="column">
-        <h4>Shipping Address</h4>
-        {% csrf_token %}
-        {{ shipping_form.as_p }}
-        {{ checkout_form.as_p }}
-        <input type="hidden" id="payment-method-nonce" name="payment_method_nonce"></input>
-    </div>
-    <div class="column">
-        <h4>Payment Details</h4>
-        <div id="dropin-container"></div>
-        <input type="submit" id="submit-button" value="Place Order" class="ui button submit" />
-    </div>
+            {% for field in checkout_form %}
 
-    
-</div>
-    </form>
+            {% if field.name == 'different_billing_address' %}
+            {% else %}
+            {% if field.errors %}
+            <div class="field error">
+            {% else %}
+            <div class="field">
+            {% endif %}
+                <label>{{ field.label_tag }}</label>
+                {{ field }}
+                <div class="ui error message">
+                    {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- hidden field for submitting the token back to the server. Name will vary depending on integration-->
+            <input type="hidden" id="payment_method_nonce" name="payment_method_nonce"></input>
+        </div>
+        <div class="column">
+            <h4>Payment Details</h4>
+            <div id="dropin-container"></div>
+            <input type="submit" id="submit-button" value="Place Order" class="ui button submit" />
+        </div>
+    </div>
+</form>
 {% endblock %}
 
 {% block extra_js %}
@@ -41,12 +77,21 @@ braintree.dropin.create({
     authorization: "{% gateway_token %}",
     container: '#dropin-container'
 }, function (createErr, instance) {
-    button.addEventListener('click', function () {
-    instance.requestPaymentMethod(function (err, payload) {
-        // Submit payload.nonce to your server
-        $('#payment-method-nonce').val(payload.token);
-        document.getElementById("checkout-form").submit();
-    });
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (instance){
+        instance.requestPaymentMethod(function (err, payload) {
+            // Submit payload.nonce to your server
+            if (err) {
+                // TODO: Handle this error
+                console.log(err);
+            }
+            else {
+                $('#payment_method_nonce').val(payload.nonce);
+                document.getElementById("checkout-form").submit();
+            }
+        });
+      }
     });
 });
 </script>

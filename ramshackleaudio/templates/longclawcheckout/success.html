@@ -2,3 +2,13 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 {% load ramshackletags longclawcheckout_tags %}
+
+ {% block content %}
+<div class="ui centered grid">
+  <div class="center aligned column">
+    <div class="raised segment">
+      <p>Thanks! Your order is #{{order.id}}. We try to process orders within 7 days.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
