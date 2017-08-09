@@ -5,7 +5,7 @@
 
 {% block content %}
 <br />
-
+{% if basket.count > 0 %}
 <form action="." method="post" class="ui form" id="checkout-form">
     <div class="ui container two column grid">
         <div class="column">
@@ -87,6 +87,13 @@
         </div>
     </div>
 </form>
+{% else %}
+<div class="ui centered grid">
+  <div class="center aligned column">
+    <p>You don't have anything in your basket yet! Visit the <a href="/products">shop</a> to see our products</p>
+  </div>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block extra_js %}
@@ -102,6 +109,7 @@ SDK's
 
 <!--Finally add the media from the checkout form.-->
 {{ checkout_form.media }}
+{% if basket.count > 0 %}
 <script type="text/javascript">
 
     //Initialize shipping options - this function is from the
@@ -149,4 +157,5 @@ SDK's
         }).then(location.reload());
     });
 </script>
+{% endif %}
 {% endblock %}
