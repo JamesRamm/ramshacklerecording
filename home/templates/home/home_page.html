@@ -8,29 +8,33 @@
 {% block content %}
 
 <div class="ui three column doubling stackable grid container">
-  {% with products|rows:"3" as product_columns %}
-  
+    <div class="column">
+        <h3>Happy Christmas!</h3>
+        <p>Ramshackle Recording is currently on hiatus, see you in the new year!</p>
+    </div>
+  <!-- {% with products|rows:"3" as product_columns %}
+
     <div class="column">
         {% for product in product_columns.0 %}
         {% image product.specific.first_image.image original as photo %}
-        {% include 'home/inc/product_card.html' with product=product photo=photo %}    
+        {% include 'home/inc/product_card.html' with product=product photo=photo %}
         {% endfor %}
     </div>
-  
+
     <div class="column">
         {% for product in product_columns.1 %}
         {% image product.specific.first_image.image original as photo %}
-        {% include 'home/inc/product_card.html' with product=product photo=photo %} 
+        {% include 'home/inc/product_card.html' with product=product photo=photo %}
         {% endfor %}
     </div>
-  
+
     <div class="column">
         {% for product in product_columns.2 %}
         {% image product.specific.first_image.image original as photo %}
-        {% include 'home/inc/product_card.html' with product=product photo=photo %}   
+        {% include 'home/inc/product_card.html' with product=product photo=photo %}
         {% endfor %}
     </div>
-    {% endwith %}
+    {% endwith %} -->
 </div>
 
 {% endblock %}
