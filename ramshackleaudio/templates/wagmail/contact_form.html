@@ -12,7 +12,7 @@
         {% for field in form %}
             {% if field.errors %}
                 <div class="control-group error">
-                    <label class="control-label">{{ field.label }}</label> 
+                    <label class="control-label">{{ field.label }}</label>
                     <div class="controls">{{ field }}
                         <span class="help-inline">
                             {% for error in  field.errors %}{{ error }}{% endfor %}
@@ -21,7 +21,7 @@
                 </div>
             {% else %}
                 <div class="control-group">
-                    <label class="control-label">{{ field.label }}</label> 
+                    <label class="control-label">{{ field.label }}</label>
                     <div class="controls">{{ field }}
                         {% if field.help_text %}
                             <p class="help-inline"><small>{{ field.help_text }}</small></p>
@@ -37,6 +37,21 @@
 
     <button type="submit" class="ui button submit" >Submit</button>
 </form>
+</div>
+<div>
+    <p>
+        <small>
+            Alternatively, contact us at our registered address:
+            <address>
+                White House Cottage
+                Main Street
+                Elvington
+                York
+                YO41 4AG
+                UK
+            </address>
+        </small>
+    </p>
 </div>
 {% endblock %}
 

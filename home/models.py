@@ -9,7 +9,6 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChoo
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 
-from longclaw.longclawproducts.models import Product
 
 class HomePage(Page):
 
@@ -24,40 +23,41 @@ class HomePage(Page):
     cover_text = models.CharField(max_length=255, blank=True)
 
     def get_context(self, request, *args, **kwargs):
+        from longclaw.utils import maybe_get_product_model
         context = super(HomePage, self).get_context(request, *args, **kwargs)
-        context['products'] = Product.objects.all()
+        context['products'] = maybe_get_product_model().objects.all()
         return context
 
 HomePage.content_panels = [
     FieldPanel('title', classname="full title"),
     ImageChooserPanel('cover_image'),
     FieldPanel('cover_text'),
-    InlinePanel('promoted_projects', label="Promoted Projects"),
-    InlinePanel('promoted_products', label="Promoted Products")
+    # InlinePanel('promoted_projects', label="Promoted Projects"),
+    # InlinePanel('promoted_products', label="Promoted Products")
 ]
 
 HomePage.promote_panels = Page.promote_panels
 
-class PromotedProject(Orderable):
-    project = models.ForeignKey(
-        'projects.Project',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-    page = ParentalKey('home.HomePage', related_name='promoted_projects')
-    panels = [
-        PageChooserPanel('project')
-    ]
+# class PromotedProject(Orderable):
+#     project = models.ForeignKey(
+#         'projects.Project',
+#         null=True,
+#         blank=True,
+#         related_name='+'
+#     )
+#     page = ParentalKey('home.HomePage', related_name='promoted_projects')
+#     panels = [
+#         PageChooserPanel('project')
+#     ]
 
-class PromotedProduct(Orderable):
-    product = models.ForeignKey(
-        'longclawproducts.Product',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-    page = ParentalKey('home.HomePage', related_name='promoted_products')
-    panels = [
-        PageChooserPanel('product')
-    ]
+# class PromotedProduct(Orderable):
+#     # product = models.ForeignKey(
+#     #     'longclawproducts.Product',
+#     #     null=True,
+#     #     blank=True,
+#     #     related_name='+'
+#     # )
+#     page = ParentalKey('home.HomePage', related_name='promoted_products')
+#     panels = [
+#         PageChooserPanel('product')
+#     ]

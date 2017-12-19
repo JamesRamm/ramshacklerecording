@@ -61,14 +61,15 @@ INSTALLED_APPS = [
     'longclaw.longclawsettings',
     'longclaw.longclawshipping',
     'longclaw.longclawproducts',
-    'products',
-    'longclaw.longclawbasket',
-    'longclaw.longclawcheckout',
+
     'longclaw.longclaworders',
+    'longclaw.longclawcheckout',
+    'longclaw.longclawbasket',
     'longclaw.longclawstats',
     'wagmail',
     'wagtailmath',
 
+    'products',
     'home',
     'search',
     'projects',

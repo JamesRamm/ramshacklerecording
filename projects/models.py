@@ -17,14 +17,13 @@ from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 
-from longclaw.longclawproducts.models import Product
 from wagtailmath.blocks import MathBlock
 
 class ProjectIndex(Page):
     subpage_types = ["projects.Project"]
 
 class ProjectProduct(models.Model):
-    product = models.ForeignKey(Product, related_name="+")
+    product = models.ForeignKey('products.Product', related_name="+")
     project = ParentalKey('Project', related_name="project_product_relationship")
 
     panels = [
