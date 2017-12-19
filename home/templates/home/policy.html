@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% load wagtailmath %}
+{% block content %}
+<div class="ui fluid container">
+    <div class="ui grid">
+    <div class="ui four wide column">
+        <div class="ui segment">
+            <h4>Tags</h4>
+            {% for tag in page.tags.all %}
+            <a class="ui teal tag label">
+                {{ tag }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="ui eight wide column">
+        <article class="ui piled segment">
+            <h1 class="ui centered header">{{page.title}}</h1>
+            <section>{{page.body}}</section>
+        </article>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

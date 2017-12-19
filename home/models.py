@@ -8,6 +8,7 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailcore.fields import RichTextField
 
 
 class HomePage(Page):
@@ -37,6 +38,17 @@ HomePage.content_panels = [
 ]
 
 HomePage.promote_panels = Page.promote_panels
+
+
+class PolicyIndex(Page):
+    subpage_types = ('home.Policy',)
+
+class Policy(Page):
+    parent_page_types = ('home.PolicyIndex',)
+    body = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('body')
+    ]
 
 # class PromotedProject(Orderable):
 #     project = models.ForeignKey(
